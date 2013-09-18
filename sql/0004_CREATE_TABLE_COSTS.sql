@@ -1,0 +1,8 @@
+CREATE TABLE costs (
+	id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	cost_date DATE NOT NULL,
+	cost_amount DECIMAL(11,2) NOT NULL,
+	cost_description TEXT NOT NULL,
+	cost_type_id INT UNSIGNED NOT NULL,
+	case_id INT UNSIGNED NOT NULL
+);

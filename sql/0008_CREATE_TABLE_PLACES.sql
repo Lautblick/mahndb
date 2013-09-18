@@ -1,0 +1,5 @@
+CREATE TABLE places (
+	id VARCHAR(255) NOT NULL PRIMARY KEY,
+	place_name VARCHAR(255) NOT NULL,
+	place_country VARCHAR(255) NOT NULL
+);

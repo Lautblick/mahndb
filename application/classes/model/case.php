@@ -1,0 +1,87 @@
+<?php defined('SYSPATH') or die('No direct script access.');
+
+
+class Model_Case extends ORM
+{
+	// Small example of how rules could look like.
+	protected $_rules = array(
+		'case_reason' => array(
+			'not_empty' => NULL,
+		),
+	);
+
+	// Relationships
+	protected $_has_many = array(
+		'claimants' => array(
+			'model' => 'person',
+			'through' => 'claimants',
+		),
+		'defendants' => array(
+			'model' => 'person',
+			'through' => 'defendants',
+		),
+		/*
+		'cl_lawyers' => array(
+			'model' => 'person',
+			'through' => 'cl_lawyers',
+		),
+		'def_lawyers' => array(
+			'model' => 'person',
+			'through' => 'def_lawyers',
+		),
+		*/
+		'costs' => array(
+			'model' => 'cost',
+		),
+		'appointments' => array(
+			'model' => 'appointment',
+		),
+		'events' => array(
+			'model' => 'event'
+		),
+	);
+
+	protected $_belongs_to = array(
+		'tenancy' => array(),
+		'casetype' => array(
+			'foreign_key' => 'case_type_id'
+		),
+		'cl_lawyer' => array(
+			'model' => 'person',
+			'foreign_key' => 'cl_lawyer_id',
+		),
+		'def_lawyer' => array(
+			'model' => 'person',
+			'foreain_key' => 'def_lawyer_id',
+		),
+	);
+
+	// Custom methods
+	public function max()
+	{
+		return DB::select(array(DB::expr('MAX(case_nr) AS max')))
+				->from('cases')
+				->execute();
+	}	
+
+	public function find_filtered()
+	{
+
+	}
+
+	public function get_total_costs($type = false)
+	{
+		$total = 0.00;
+		$costs = array();
+		if(!$type):
+			$costs = ORM::factory('cost')->find_all();
+		else:
+			$costtype = ORM::factory('costtype')->where('type_name', '=', $type)->find();
+			$costs = ORM::factory('cost')->where('cost_type_id', '=', $costtype->id)->find_all();
+		endif;
+		foreach($costs as $cost):
+			$total += $cost->cost_amount;
+		endforeach;
+		return $total;
+	}
+}

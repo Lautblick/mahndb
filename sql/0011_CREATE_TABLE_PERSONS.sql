@@ -1,0 +1,7 @@
+CREATE TABLE persons (
+	id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	person_title VARCHAR(255) NOT NULL,
+	person_firstname VARCHAR(255) NOT NULL,
+	person_lastname VARCHAR(255) NOT NULL,
+	address_id INT UNSIGNED NOT NULL
+);
