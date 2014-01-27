@@ -21,6 +21,9 @@ class Controller_Event extends Controller {
 			$case = ORM::factory('case', $_POST['case_id']);
 			$event = ORM::factory('event');
 			$event->values($_POST);
+			if($_POST['case_status'] != '') {
+				$case->status_id = $_POST['case_status'];
+			}
 			$event_type = ORM::factory('eventtype')->where('type_name', '=', $_POST['event_type'])->find();
 			if(!$event_type->loaded()):
 				$event_type->type_name = $_POST['event_type'];
@@ -52,6 +55,12 @@ class Controller_Event extends Controller {
 			$event->values($_POST);
 			$event->event_date = date('Y-m-d', strtotime($_POST['event_date']));
 			$event->save();
+
+			if($_POST['case_status'] != '') {
+				$case = $event->case;
+				$case->status_id = $_POST['case_status'];
+				$case->save();
+			}
 		endif;
 	}
 
@@ -88,7 +97,8 @@ class Controller_Event extends Controller {
 		$event->event_date = date('d.m.Y', strtotime($event->event_date));
 		$event_edit = View::factory('event_edit');
 		$event_edit->event = $event;
-		
+		$statuses = ORM::factory('status')->find_all();
+		$event_edit->statuses = $statuses;
 		echo $event_edit;
 	}
 }

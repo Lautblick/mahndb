@@ -7,17 +7,31 @@ class Controller_Case extends Controller
 	 */
 	public function action_show()
 	{
+
+		$user = Auth::instance()->get_user();
+		$roles = array();
+		if($user) {
+			foreach (ORM::factory('user', $user->id)->roles->find_all() as $role) {
+				array_push($roles, $role->name);
+			}
+		}
+
 		$id = $this->request->param('id');
 			
 		$the_case = ORM::factory('case', $id);
 		$case_types = ORM::factory('casetype')->find_all();
 		$event_types = ORM::factory('eventtype')->find_all();
 		$cost_types = ORM::factory('costtype')->find_all();
+		$statuses = ORM::factory('status')->find_all();
+		$users = ORM::factory('user')->find_all();
 		$details_content = View::factory('case_details');
 		$details_content->the_case = $the_case;
 		$details_content->case_types = $case_types;
 		$details_content->event_types = $event_types;
 		$details_content->cost_types = $cost_types;
+		$details_content->statuses = $statuses;
+		$details_content->roles = $roles;
+		$details_content->users = $users;
 		
 		echo $details_content;
 	}
@@ -63,8 +77,22 @@ class Controller_Case extends Controller
 		$tenancy = ORM::factory('tenancy')->where('tenancy_ve', '=', $_POST['tenancy_ve'])->find();
 		if(!$tenancy->loaded()):
 			$tenancy->tenancy_ve = $_POST['tenancy_ve'];
-			$tenancy->save();
 		endif;
+		$tenancy->tenancy_position = $_POST['tenancy_position'];
+
+		$address = ORM::factory('address');
+		// $address->values($_POST);
+		$address->address_street = $_POST['tenancy_street'];
+		$place = ORM::factory('place', $_POST['tenancy_zip']);
+		if(!$place->loaded()):
+			$place->id = $_POST['tenancy_zip'];
+			$place->place_name = $_POST['tenancy_city'];
+			$place->save();
+		endif;
+		$address->place_id = $place->id;
+		$address->save();
+		$tenancy->address_id = $address->id;
+		$tenancy->save();
 		
 		$case_type = ORM::factory('casetype')->where('type_name', '=', $_POST['case_type'])->find();
 		if(!$case_type->loaded()):
@@ -83,6 +111,41 @@ class Controller_Case extends Controller
 	}
 
 	/**
+	 * /case/update/<case->id> GET
+	 */
+	public function action_sendmail()
+	{
+		$id = $this->request->param('id');
+		$the_case = ORM::factory('case', $id);
+		
+		$case_types = ORM::factory('casetype')->find_all();
+		$event_types = ORM::factory('eventtype')->find_all();
+		$cost_types = ORM::factory('costtype')->find_all();
+		$details_content = View::factory('case_details_mail');
+		$details_content->the_case = $the_case;
+		$details_content->case_types = $case_types;
+		$details_content->event_types = $event_types;
+		$details_content->cost_types = $cost_types;		
+
+		$recipients = ORM::factory('user')->where('common_note', '=', '1')->find_all();
+
+		$auftraggeber = $the_case->claimants->where('user_id', 'IS NOT', NULL)->find_all();
+
+		$email = Email::factory('Fall '.$the_case->tenancy->tenancy_ve.' wurde aktualisiert')
+			->message($details_content, 'text/html')
+		    ->from('info@agv-essen.de', 'Assindia Grundstücksverwaltung GmbH');
+
+		foreach ($recipients as $recipient) {
+			$email->to($recipient->email);
+		}
+		foreach ($auftraggeber as $auftraggeber_item) {
+			$user = ORM::factory('user', $auftraggeber_item->user_id);
+			$email->to($user->email);
+		}
+		$email->send();
+	}
+
+	/**
 	 * /case/delete/<case->id> GET - Question
 	 * /case/delete/<case->id> POST - Confirmation
 	 */
@@ -97,11 +160,30 @@ class Controller_Case extends Controller
 	/**
 	 * /case/printlist/
 	 */
-	public function action_printlist()
+	public function action_printlist($selectedList)
 	{
-		$cases = ORM::factory('case')->where('case_deleted', '=', '0')->order_by('case_active', 'desc')->order_by('case_followup', 'asc')->find_all();
-		$case_list = View::factory('case_list');
-		$case_list->cases = $cases;
+		if($selectedList == 1) {
+			$cases = ORM::factory('case')->with('tenancy')->with('cl_lawyer')->with('def_lawyer')->where('case_active', '=', '0')->order_by('tenancy_ve', 'asc')->find_all();
+		}
+		else if ($selectedList == 2) {
+			$upcoming_appointments = ORM::factory('appointment')
+				->where('appointment_datetime', '>=', '2013-10-04 00:00:00')
+				->and_where('appointment_datetime', '<', '2013-11-04 00:00:00')
+				->order_by('appointment_datetime', 'asc')
+				->find_all();
+		}
+		else {
+			$cases = ORM::factory('case')->with('tenancy')->with('cl_lawyer')->with('def_lawyer')->where('case_active', '=', '1')->order_by('tenancy_ve', 'asc')->find_all();
+		}
+
+		if($selectedList != 2) {
+			$case_list = View::factory('case_list');
+			$case_list->cases = $cases;
+		}
+		else {
+			$case_list = View::factory('upcoming_appointments_list');
+			$case_list->upcoming_appointments = $upcoming_appointments;
+		}
 		$print = View::factory('main_print');
 		$print->list_content = $case_list;
 		echo $print;

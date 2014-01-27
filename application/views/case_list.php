@@ -10,7 +10,8 @@ if ($followup-$now < 345600) {
 }
 
 if($case->case_active == 0) {
-	$list_class = 'notactive';
+	// $list_class = 'notactive';
+	$list_class = '';
 }
 
 ?>
@@ -27,14 +28,19 @@ if($case->case_active == 0) {
 		echo number_format($total, 2, ',', '');
 		?> €</span>
 		<div class="clear"></div>
-		<span class="grid_12 small">Kläger: <?php foreach($case->claimants->find_all() as $claimant):?><?=$claimant->person_title.'&nbsp;'.$claimant->person_firstname . '&nbsp;' . $claimant->person_lastname?>, <?php endforeach;?><br />
-		Beklagter: <?php foreach($case->defendants->find_all() as $defendant):?><?=$defendant->person_title.'&nbsp;'.$defendant->person_firstname.'&nbsp;'.$defendant->person_lastname?>, <?php endforeach;?></span>
+		<span class="grid_12 small">Status: <?= $case->status->name ?><br>
+		Vermieter: <?php foreach($case->claimants->find_all() as $claimant):?><?=$claimant->person_title.'&nbsp;'.$claimant->person_firstname . '&nbsp;' . $claimant->person_lastname?>, 
+			<div style="display: none;"><?= $claimant->address->address_street ?> <?= $claimant->address->place->id ?> <?= $claimant->address->place->place_name ?></div>
+		<?php endforeach;?><br />
+		Mieter / Schuldner: <?php foreach($case->defendants->find_all() as $defendant):?><?=$defendant->person_title.'&nbsp;'.$defendant->person_firstname.'&nbsp;'.$defendant->person_lastname?>, 
+			<div style="display: none;"><?= $defendant->address->address_street ?> <?= $defendant->address->place->id ?> <?= $defendant->address->place->place_name ?></div>
+		<?php endforeach;?></span>
 		<div class="clear"></div>
 		
 		<div style="display:none;">
-		<?= $case->cl_lawyer->person_title.' '.$case->cl_lawyer->person_firstname.' '.$case->cl_lawyer->person_lastname; ?>
-		<?= $case->def_lawyer->person_title.' '.$case->def_lawyer->person_firstname.' '.$case->def_lawyer->person_lastname; ?>
-		<?= $case->court_ref; ?>
+			<?= $case->cl_lawyer->person_title.' '.$case->cl_lawyer->person_firstname.' '.$case->cl_lawyer->person_lastname; ?>
+			<?= $case->def_lawyer->person_title.' '.$case->def_lawyer->person_firstname.' '.$case->def_lawyer->person_lastname; ?>
+			<?= $case->court_ref; ?>
 		</div>
 		
 	</a>

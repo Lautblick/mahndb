@@ -8,11 +8,11 @@ class Model_Person extends ORM
 	protected $_has_many = array(
 		'claimants' => array(
 			'model' => 'person',
-			'through' => 'claimants',
+			'through' => 'mahn_claimants',
 		),
 		'defedants' => array(
 			'model' => 'person',
-			'through' => 'defendants',
+			'through' => 'mahn_defendants',
 		),
 		/*
 		'cl_lawyers' => array(
@@ -28,7 +28,7 @@ class Model_Person extends ORM
 
 	protected $_belongs_to = array(
 		'address' => array(),
-		'cases' => array(),
+		'mahn_cases' => array(),
 	);
 
 	// Custom methods

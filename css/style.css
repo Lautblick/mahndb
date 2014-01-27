@@ -216,7 +216,7 @@ html, body { height: 100% }
 label { font-size: 0.8em; text-shadow: 0px 1px 1px #fff; }
 
 fieldset { margin-bottom: 15px; }
-input[type=text], textarea { width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; border: 1px solid #ddd; }
+input[type=text], input[type=password], textarea { width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; border: 1px solid #ddd; }
 input[type=text]:focus, textarea:focus { outline: none; border: 1px solid #1a99c3; }
 input[disabled=disabled], textarea[disabled=disabled] { color: #222; }
 select { width: 100%; }
@@ -251,26 +251,35 @@ a.download img { vertical-align: baseline; }
 
 
 #case_list_1,
-#case_list_2 { background-color: #fff; border: 1px solid #ddd; list-style: none; padding: 0px; margin: 0px; }
+#case_list_2,
+#case_list_3 { background-color: #fff; border: 1px solid #ddd; list-style: none; padding: 0px; margin: 0px; width: 100%; }
 #case_list_1 li,
-#case_list_2 li { position: relative; }
+#case_list_2 li,
+#case_list_3 li { position: relative; }
 #case_list_1 li a,
-#case_list_2 li a { display: block; padding: 15px; border-bottom: 1px solid #ddd; text-decoration: none; }
+#case_list_2 li a,
+#case_list_3 li a { display: block; padding: 15px; border-bottom: 1px solid #ddd; text-decoration: none; }
 #case_list_1 li a:hover,
-#case_list_2 li a:hover { background-color: #aae1f3; }
-#case_list_1 li.current a,
+#case_list_2 li a:hover,
+#case_list_3 li a:hover { background-color: #aae1f3; }
+#case_list_2 li.current a,
+#case_list_3 li.current a,
 #case_list_2 li.current a,
 .sublist li.current a:hover { background-color: #1a99c3; color: #fff; text-shadow: 0px -1px 1px #222; }
 #case_list_1 li.current.urgent a,
 #case_list_2 li.current.urgent a,
+#case_list_3 li.current.urgent a,
 .sublist li.current.urgent a:hover { background-color: #ba0034; color: #fff; text-shadow: 0px -1px 1px #222; }
 #case_list_1 li.urgent a,
-#case_list_2 li.urgent a { background-color: #ea97b6; color: #222; text-shadow: 0px 1px 1px #fff; }
+#case_list_2 li.urgent a,
+#case_list_3 li.urgent a { background-color: #ea97b6; color: #222; text-shadow: 0px 1px 1px #fff; }
 #case_list_1 li.current.notactive a,
 #case_list_2 li.current.notactive a,
+#case_list_3 li.current.notactive a,
 .sublist li.current.notactive a:hover { background-color: #1a99c3; color: #aae1f3; text-shadow: 0px -1px 1px #222; }
 #case_list_1 li.notactive a,
-#case_list_2 li.notactive a { color: #ccc; text-shadow: 0px 1px 1px #fff; }
+#case_list_2 li.notactive a,
+#case_list_3 li.notactive a { color: #ccc; text-shadow: 0px 1px 1px #fff; }
 
 #search_case {
 	border-radius: 15px;
@@ -317,13 +326,15 @@ a.download img { vertical-align: baseline; }
 
 #main { background-color: #f7f7f7; height: 100%; }
 #cases_tabs { position: absolute; top: 38px; left: 0px; bottom: 0px; width: 30%; background-color: #efefef; }
-#case_list_1, #case_list_2 { list-style: none; margin: 0px; padding: 0px; position: absolute; top: 40px; bottom: 0px; overflow-y: auto; background-color: #efefef; text-shadow: 0px 1px 1px #fff; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+#case_list_1, #case_list_2, #case_list_3 { list-style: none; margin: 0px; padding: 0px; position: absolute; top: 40px; bottom: 0px; overflow-y: auto; background-color: #efefef; text-shadow: 0px 1px 1px #fff; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 #case_details { position: absolute; top: 38px; right: 0px; bottom: 0px; width: 70%; overflow-y: auto; }
 #case_details form { padding: 15px; }
 
 #costs_tabs { border: none; background: transparent; }
 #costs_tabs .ui-widget-header { border: none; background: transparent; }
 #costs_tabs .ui-widget-content { border: 1px solid #dddddd; background: #fff; }
+
+.costs_headine {display: none;}
 
 .sublist li.cost_total { min-height: 0px; position: absolute; bottom: -30px; right: 10px; width: 200px; color: #fff; border: none; padding: 0px; }
 .sublist li.cost_total:hover { background: transparent; }
@@ -421,19 +432,24 @@ a.download img { vertical-align: baseline; }
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; }
   
-  #case_list_1, #case_list_2 { display: none; }
+  #cases_tabs {display: none;}
+  #case_list_1, #case_list_2, #case_list_3 { display: none; }
   #case_details { position: relative; width: 100%; }
   .menu { display: none; }
-  .sublist { max-height: none; }
-  .ui-tabs-nav { display: none; }
+  .sublist { max-height: none; margin-bottom: 20px; }
   .ui-tabs .ui-tabs-hide { display: block !important; }
   .dontprint { display: none; }
+
+  .sublist li.cost_total {position: relative; bottom: 0; float: right;}
 
 	.person_edit,
 	.event_edit,
 	.appointment_edit,
 	.ui-widget .cost_edit,
+  .reiter,
 	#case_update {
 		display: none;
 	}
+
+  .costs_headine {display: block;}
 }

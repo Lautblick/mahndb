@@ -12,7 +12,7 @@
 More info: h5bp.com/b/378 -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<title>Mahn- und Klagedatenbank</title>
+<title>Versicherungsdatenbank</title>
 <meta name="description" content="">
 <meta name="author" content="">
 
@@ -49,19 +49,24 @@ For optimal performance, use a custom Modernizr build: www.modernizr.com/downloa
 
 	<div id="case_menu" class="menu ui-state-default">
 		<button id="case_new"><span class="ui-icon ui-icon-circle-plus"></span>Neuen Vorgang erstellen</button>
-		<button id="printlist" onclick="javascript:window.open('case/printlist');"><span class="ui-icon ui-icon-print"></span>Liste jetzt drucken</button>
+		<button id="printlist"><span class="ui-icon ui-icon-print"></span>Liste jetzt drucken</button>
 		<input id="search_case" type="text" placeholder="Fall suchen ..."/>
+		<?= HTML::anchor('user/logout', 'Abmelden'); ?>
 	</div>
 	<div id="cases_tabs">
 		<ul>
 			<li><a href="#case_list_1">Offene Fälle</a></li>
 			<li><a href="#case_list_2">Geschlossene Fälle</a></li>
+			<li><a href="#case_list_3">Anstehende Termine</a></li>
 		</ul>
 		<ul id="case_list_1">
 			<?= $list_content ?>
 		</ul>
 		<ul id="case_list_2">
 			<?= $list_content_closed ?>
+		</ul>
+		<ul id="case_list_3">
+			<?= $list_content_appointment ?>
 		</ul>
 	</div>
 	<div id="case_details">
@@ -73,8 +78,8 @@ For optimal performance, use a custom Modernizr build: www.modernizr.com/downloa
 <!-- JavaScript at the bottom for fast page loading -->
 
 <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="/js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/js/libs/jquery-1.7.2.min.js"><\/script>')</script>
 
 <script type="text/javascript" src="/js/libs/jquery-ui-1.8.16.custom.min.js"></script>
 

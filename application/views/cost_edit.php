@@ -7,6 +7,7 @@
 				</fieldset>
 				<fieldset>
 					<div class="grid_6"><label for="cost_type_edit">Kostenart</label><input type="text" name="cost_type_edit" id="cost_type_edit" value="<?= $cost->costtype->type_name ?>" /></div>
+					<div class="grid_6"><input type="checkbox" name="cost_payment_edit" id="cost_payment_edit" value="1" <?php if($cost->cost_payment == 1) { echo 'checked="checked"'; } ?> /> <label for="cost_payment_edit">Zahlung</label></div>
 				</fieldset>
 				<fieldset>
 					<div class="grid_3">

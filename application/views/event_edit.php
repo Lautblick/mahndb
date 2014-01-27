@@ -17,6 +17,17 @@
 					<div class="grid_12"><label for="event_description">Beschreibung (optional)</label><textarea name="event_description" id="event_description"><?= $event->event_description ?></textarea></div>
 				</fieldset>
 				<fieldset>
+					<div class="grid_12">
+						<label for="case_status">Status des Falles</label>
+						<select name="case_status" id="case_status">
+							<option value="">Keine Änderung</option>
+							<?php foreach ($statuses as $status) { ?>
+								<option value="<?= $status->id ?>"><?= $status->name ?></option>
+							<?php } ?>
+						</select>
+					</div>
+				</fieldset>
+				<fieldset>
 					<div class="grid_12"><button id="event_edit">Ereignis speichern</button></div>
 				</fieldset>
 			</div>

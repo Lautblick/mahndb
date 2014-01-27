@@ -3,6 +3,10 @@
 class Model_Tenancy extends ORM
 {
 	protected $_has_many = array(
-		'cases' => array(),
+		'mahn_cases' => array(),
+	);
+
+	protected $_belongs_to = array(
+		'address' => array(),
 	);
 }

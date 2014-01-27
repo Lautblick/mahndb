@@ -5,7 +5,7 @@ class Model_Def_lawyers extends ORM
 	protected $_table_name = 'def_lawyers';
 	// Relationships
 	protected $_belongs_to = array(
-		'cases' => array(
+		'mahn_cases' => array(
 		),
 		'persons' => array(
 		),	

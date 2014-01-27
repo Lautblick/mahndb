@@ -12,7 +12,7 @@
 More info: h5bp.com/b/378 -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<title>Mahn- und Klagedatenbank</title>
+<title>Versicherungsdatenbank</title>
 <meta name="description" content="">
 <meta name="author" content="">
 
@@ -55,8 +55,8 @@ For optimal performance, use a custom Modernizr build: www.modernizr.com/downloa
 <!-- JavaScript at the bottom for fast page loading -->
 
 <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="/js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/js/libs/jquery-1.7.2.min.js"><\/script>')</script>
 
 <script type="text/javascript" src="/js/libs/jquery-ui-1.8.16.custom.min.js"></script>
 

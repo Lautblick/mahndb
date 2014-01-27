@@ -1,0 +1,5 @@
+application\config\database.php
+- in database = inkassodb eingetragen
+
+application\views\cas\details.php
+alle texte umbenannt

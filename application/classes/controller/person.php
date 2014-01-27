@@ -64,6 +64,21 @@ class Controller_Person extends Controller
 				$case->save();
 				echo $person->id.':'.$person->person_title.' '.$person->person_firstname.' '.$person->person_lastname;
 			}
+			else if($_POST['add_as'] == 'bailiffs') {
+				$case->bailiff_id = $person->id;
+				$case->save();
+				echo $person->id.':'.$person->person_title.' '.$person->person_firstname.' '.$person->person_lastname;
+			}
+			else if($_POST['add_as'] == 'syndicates') {
+				$case->syndicate_id = $person->id;
+				$case->save();
+				echo $person->id.':'.$person->person_title.' '.$person->person_firstname.' '.$person->person_lastname;
+			}
+			else if($_POST['add_as'] == 'clubs') {
+				$case->club_id = $person->id;
+				$case->save();
+				echo $person->id.':'.$person->person_title.' '.$person->person_firstname.' '.$person->person_lastname;
+			}
 		endif;
 	}
 
@@ -108,9 +123,21 @@ class Controller_Person extends Controller
 	 * /person/getedit POST
 	 */
 	public function action_getedit() {
+
+		$user = Auth::instance()->get_user();
+		$roles = array();
+		if($user) {
+			foreach (ORM::factory('user', $user->id)->roles->find_all() as $role) {
+				array_push($roles, $role->name);
+			}
+		}
+
 		$person = ORM::factory('person', $_POST['person_id']);
+		$users = ORM::factory('user')->find_all();
 		$person_edit = View::factory('person_edit');
 		$person_edit->person = $person;
+		$person_edit->roles = $roles;
+		$person_edit->users = $users;
 		
 		echo $person_edit;
 	}

@@ -18,7 +18,7 @@ return array
 			 * Ports and sockets may be appended to the hostname.
 			 */
 			'hostname'   => 'localhost',
-			'database'   => 'mahndb',
+			'database'   => 'assindiadb',
 			'username'   => 'root',
 			'password'   => '',
 			'persistent' => FALSE,
@@ -39,7 +39,7 @@ return array
 			 * string   password    database password
 			 * boolean  persistent  use persistent connections?
 			 */
-			'dsn'        => 'mysql:host=localhost;dbname=mahndb',
+			'dsn'        => 'mysql:host=localhost;dbname=assindiadb',
 			'username'   => 'root',
 			'password'   => 'sahnetorte',
 			'persistent' => FALSE,

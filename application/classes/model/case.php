@@ -3,6 +3,8 @@
 
 class Model_Case extends ORM
 {
+	protected $_table_name = 'mahn_cases';
+
 	// Small example of how rules could look like.
 	protected $_rules = array(
 		'case_reason' => array(
@@ -14,11 +16,11 @@ class Model_Case extends ORM
 	protected $_has_many = array(
 		'claimants' => array(
 			'model' => 'person',
-			'through' => 'claimants',
+			'through' => 'mahn_claimants',
 		),
 		'defendants' => array(
 			'model' => 'person',
-			'through' => 'defendants',
+			'through' => 'mahn_defendants',
 		),
 		/*
 		'cl_lawyers' => array(
@@ -46,13 +48,28 @@ class Model_Case extends ORM
 		'casetype' => array(
 			'foreign_key' => 'case_type_id'
 		),
+		'status' => array(
+			'foreign_key' => 'status_id'
+		),
 		'cl_lawyer' => array(
 			'model' => 'person',
 			'foreign_key' => 'cl_lawyer_id',
 		),
 		'def_lawyer' => array(
 			'model' => 'person',
-			'foreain_key' => 'def_lawyer_id',
+			'foreign_key' => 'def_lawyer_id',
+		),
+		'bailiff' => array(
+			'model' => 'person',
+			'foreign_key' => 'bailiff_id',
+		),
+		'syndicate' => array(
+			'model' => 'person',
+			'foreign_key' => 'syndicate_id',
+		),
+		'club' => array(
+			'model' => 'person',
+			'foreign_key' => 'club_id',
 		),
 	);
 
@@ -60,7 +77,7 @@ class Model_Case extends ORM
 	public function max()
 	{
 		return DB::select(array(DB::expr('MAX(case_nr) AS max')))
-				->from('cases')
+				->from('mahn_cases')
 				->execute();
 	}	
 

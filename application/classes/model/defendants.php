@@ -2,11 +2,11 @@
 
 class Model_Defendants extends ORM
 {
-	protected $_table_name = 'defendants';
+	protected $_table_name = 'mahn_defendants';
 
 	// Relationships
 	protected $_belongs_to = array(
-		'cases' => array(
+		'mahn_cases' => array(
 		),
 		'persons' => array(
 		),	

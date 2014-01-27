@@ -2,7 +2,8 @@
 
 class Model_Eventtype extends ORM
 {
-	protected $_table_name = 'event_types';
+	protected $_table_name = 'mahn_event_types';
+	
 	// Relationships
 	protected $_has_many = array(
 		'events' => array(

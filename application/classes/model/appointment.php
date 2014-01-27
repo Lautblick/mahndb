@@ -2,10 +2,11 @@
 
 class Model_Appointment extends ORM
 {
-	protected $_table_name = 'appointments';
+	protected $_table_name = 'mahn_appointments';
 	// Relationships
 	protected $_belongs_to = array(
-		'cases' => array(
+		'case' => array(
+			'model' => 'case',
 		),
 	);
 

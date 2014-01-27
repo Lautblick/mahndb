@@ -36,6 +36,11 @@ $(function() {
 		var data = {
 			case_id: case_id,
 			tenancy_ve: $('#tenancy_ve').val(),
+			tenancy_street: $('#tenancy_street').val(),
+			tenancy_zip: $('#tenancy_zip').val(),
+			tenancy_city: $('#tenancy_city').val(),
+			tenancy_position: $('#tenancy_position').val(),
+			case_session: $('#case_session').val(),
 			case_active: case_active,
 			case_followup: $('#case_followup').val(),
 			case_reason: $('#case_reason').val(),
@@ -44,7 +49,12 @@ $(function() {
 			def_lawyer_ref: $('#def_lawyer_ref').val(),
 			court_ref: $('#court_ref').val(),
 			case_type: $('#case_type').val(),
-			case_memo: $('#case_memo').val()
+			case_memo: $('#case_memo').val(),
+			bailiff_ref: $('#bailiff_ref').val(),
+			bailiff_charged: $('#bailiff_charged').val(),
+			syndicate_ref: $('#syndicate_ref').val(),
+			syndicate_bgnr: $('#syndicate_bgnr').val(),
+			club_ref: $('#club_ref').val(),
 		}
 		
 		console.log(data);
@@ -58,6 +68,22 @@ $(function() {
 				$('#case_list_1 #'+case_id).replaceWith(get_case_listitem(case_id));
 				$('#case_list_2 #'+case_id).replaceWith(get_case_listitem(case_id));
 				init_gui();
+			}
+  		});
+	}
+	
+	// -----------------------------------------------------------------------
+	
+	function send_mail() {
+		var case_id = $('#case_id').val();
+		var url = "/case/sendmail/"+case_id;
+		
+		$.ajax({
+			type: "GET",
+			url: url,
+			async: false,
+			success: function(msg) {
+				// alert.show('E-Mail wurde versand.');
 			}
   		});
 	}
@@ -115,15 +141,21 @@ $(function() {
 			person_title: $('#'+type+'_add_2 #person_title').val(),
 			person_firstname: $('#'+type+'_add_2 #person_firstname').val(),
 			person_lastname: $('#'+type+'_add_2 #person_lastname').val(),
+			person_dob: $('#'+type+'_add_2 #person_dob').val(),
+			person_state: $('#'+type+'_add_2 #person_state').val(),
+			person_accountnumber: $('#'+type+'_add_2 #person_accountnumber').val(),
+			person_bankcode: $('#'+type+'_add_2 #person_bankcode').val(),
 			address_street:  $('#'+type+'_add_2 #address_street').val(),
 			address_street_number:  $('#'+type+'_add_2 #address_street_number').val(),
 			address_phone_number:  $('#'+type+'_add_2 #address_phone_number').val(),
+			address_cellphone:  $('#'+type+'_add_2 #address_cellphone').val(),
 			address_fax_number:  $('#'+type+'_add_2 #address_fax_number').val(),
 			address_email:  $('#'+type+'_add_2 #address_email').val(),
 			zipcode:  $('#'+type+'_add_2 #zipcode').val(),
 			place_name:  $('#'+type+'_add_2 #place_name').val(),
 			case_id: case_id,
-			add_as: type+'s'
+			add_as: type+'s',
+			user_id:  $('#'+type+'_add_2 #user_id').val()
 		}
 		$('#'+type+'_add_dialog').dialog('close');
 		$.ajax({
@@ -215,19 +247,25 @@ $(function() {
 	// -----------------------------------------------------------------------
 	
 	function update_person(reference) {
-		var person_id = $('#person_edit_dialog #person_id').val()
+		var person_id = $('#person_edit_dialog #person_id').val();
 		var data = {
 			person_id: person_id,
 			person_title: $('#person_edit_dialog #person_title').val(),
 			person_firstname: $('#person_edit_dialog #person_firstname').val(),
 			person_lastname: $('#person_edit_dialog #person_lastname').val(),
+			person_dob: $('#person_edit_dialog #person_dob').val(),
+			person_state: $('#person_edit_dialog #person_state').val(),
+			person_accountnumber: $('#person_edit_dialog #person_accountnumber').val(),
+			person_bankcode: $('#person_edit_dialog #person_bankcode').val(),
 			address_street:  $('#person_edit_dialog #address_street').val(),
 			address_street_number:  $('#person_edit_dialog #address_street_number').val(),
 			address_phone_number:  $('#person_edit_dialog #address_phone_number').val(),
+			address_cellphone:  $('#person_edit_dialog #address_cellphone').val(),
 			address_fax_number:  $('#person_edit_dialog #address_fax_number').val(),
 			address_email:  $('#person_edit_dialog #address_email').val(),
 			zipcode:  $('#person_edit_dialog #zipcode').val(),
-			place_name:  $('#person_edit_dialog #place_name').val()
+			place_name:  $('#person_edit_dialog #place_name').val(),
+			user_id:  $('#person_edit_dialog #user_id').val()
 		}
 		$('#person_edit_dialog').dialog('close');
 		$.ajax({
@@ -249,13 +287,17 @@ $(function() {
 	
 	function add_event() {
 		var case_id = $( "#case_id" ).val();
+		var case_session = $( "#case_session" ).val();
 		var data = {
 			event_type: $('#event_type').val(),
 			event_date: $('#event_date').val(),
 			event_file: $('#event_file').val(),
 			event_description: $('#event_description').val(),
-			case_id: case_id
+			case_status: $('#event_add_dialog #case_status').val(),
+			case_id: case_id,
+			event_session: case_session
 		}
+
 		$('#event_add_dialog').dialog('close');
 		$.ajax({
 			type: "POST",
@@ -265,6 +307,9 @@ $(function() {
 			success: function(msg) {
 				$('#events_list').append(msg);
 				$('#events_list li:last-child').hide().slideDown();
+				if(data.case_status != '') {
+					$('#case_status').val($('#event_add_dialog #case_status option:selected').text());
+				}
 				init_gui();
 			}
   		});
@@ -318,6 +363,7 @@ $(function() {
 			event_date: $('#event_edit_dialog #event_date_edit').val(),
 			event_file: $('#event_edit_dialog #event_file_edit').val(),
 			event_description: $('#event_edit_dialog #event_description').val(),
+			case_status: $('#event_edit_dialog #case_status').val(),
 		}
 		$('#event_edit_dialog').dialog('close');
 		$.ajax({
@@ -327,6 +373,9 @@ $(function() {
 			async: false,
 			success: function(msg) {
 				$('#events_list .'+event_id).replaceWith(get_event_listitem(event_id));
+				if(data.case_status != '') {
+					$('#case_status').val($('#event_edit_dialog #case_status option:selected').text());
+				}
 			}
   		});
 		init_gui();
@@ -336,13 +385,16 @@ $(function() {
 	
 	function add_appointment() {                    // <-- Wenn Termin vor nächster WV: WV aktualisieren
 		var case_id = $( "#case_id" ).val();        // <-- VE-Nr. bearbeiten öffnet Kläger hinzufügen???    Bestätigung bei Änderung VE-Nr.
+		var case_session = $( "#case_session" ).val();
 		var data = {
 			appointment_date: $('#appointment_date').val(),
 			appointment_hour: $('#appointment_hour').val(),
 			appointment_minute: $('#appointment_minute').val(),
 			appointment_location: $('#appointment_location').val(),
+			appointment_eviction: $('#appointment_eviction').attr('checked') ? 1 : 0,
 			appointment_description: $('#appointment_description').val(),
-			case_id: case_id
+			case_id: case_id,
+			appointment_session: case_session
 		}
 		$('#appointment_add_dialog').dialog('close');
 		$.ajax({
@@ -424,15 +476,28 @@ $(function() {
 	
 	// -----------------------------------------------------------------------
 	
+	// -----------------------------------------------------------------------
+	function recalculate_costs(list_id) {
+		var total = 0
+		$.each($(list_id+' .amount'), function(index, value) {
+			total = total + parseFloat($(value).html().split('.').join('').split(',').join('.'))
+		});
+		var total = total.toFixed(2).split('.').join(',')+' €';
+		$(list_id+' .cost_total strong').html(total);
+	}
+	
 	function add_cost() {
 		var case_id = $( "#case_id" ).val();
+		var case_session = $( "#case_session" ).val();
 		var data = {
 			cost_date: $('#cost_date').val(),
 			cost_file: $('#cost_file').val(),
 			cost_amount: $('#cost_amount').val().split('.').join('').split(',').join('.'),
 			cost_category: $( "#costs_tabs" ).tabs( "option", "selected" ),
 			cost_type: $('#cost_type').val(),
-			case_id: case_id
+			cost_payment: ($('#cost_payment').attr('checked')) ? '1' : '0',
+			case_id: case_id,
+			cost_session: case_session
 		}
 		$('#cost_add_dialog').dialog('close');
 		$.ajax({
@@ -443,12 +508,12 @@ $(function() {
 			success: function(msg) {
 				$('#costs_list_'+(data.cost_category+1)).append(msg);
 				$('#costs_list_'+(data.cost_category+1)+' li:last-child').hide().slideDown();
-				console.log('Element wurde angefügt in: #costs_list_'+(data.cost_category+1));
-				
-				var new_total = parseFloat(data.cost_amount)+parseFloat($('.cost_total strong').html().split('.').join('').split(',').join('.'));
-				var new_total = new_total.toFixed(2).split('.').join(',')+' €';
-				$('#costs_list_'+(data.cost_category+1)+' .cost_total strong').html(new_total);
-				console.log('Hello '+new_total);
+				recalculate_costs('#costs_list_'+(data.cost_category+1));
+
+				if(data.cost_payment = '1') {
+					$('#costs_list_4').append(msg);
+					recalculate_costs('#costs_list_4');
+				}
 				
 				$('#case_list_1 #'+case_id).replaceWith(get_case_listitem(case_id));
 				$('#case_list_2 #'+case_id).replaceWith(get_case_listitem(case_id));
@@ -507,6 +572,7 @@ $(function() {
 			cost_amount: $('#cost_edit_dialog #cost_amount').val().split('.').join('').split(',').join('.'),
 			cost_category: $( "#costs_tabs" ).tabs( "option", "selected" ),
 			cost_type: $('#cost_edit_dialog #cost_type_edit').val(),
+			cost_payment: ($('#cost_edit_dialog #cost_payment_edit').attr('checked')) ? '1' : '0',
 		}
 		var cost_amount_old = $('#costs_list_'+(data.cost_category+1)+' .'+cost_id+' .amount').html().split('.').join('').split(',').join('.').split(' €').join('');
 		
@@ -520,9 +586,13 @@ $(function() {
 			async: false,
 			complete: function(msg) {
 				$('#costs_list_'+(data.cost_category+1)+' .'+cost_id).replaceWith(get_cost_listitem(cost_id));
-				var new_total = parseFloat($('.cost_total strong').html().split('.').join('').split(',').join('.'))-parseFloat(cost_amount_old)+parseFloat(data.cost_amount)
-				var new_total = new_total.toFixed(2).split('.').join(',')+' €';
-				$('#costs_list_'+(data.cost_category+1)+' .cost_total strong').html(new_total);
+				recalculate_costs('#costs_list_'+(data.cost_category+1));
+
+				$('#costs_list_4 .'+cost_id).remove();
+				if(data.cost_payment = '1') {
+					$('#costs_list_4 .'+cost_id).append(get_cost_listitem(cost_id));
+					recalculate_costs('#costs_list_4');
+				}
 			}
   		});
 		init_gui();
@@ -531,6 +601,8 @@ $(function() {
 	// -----------------------------------------------------------------------
 		
 	function init_gui() {
+
+		console.log('init called');
 		
 		// -----------------------------------------------------------------------
 		
@@ -541,6 +613,9 @@ $(function() {
 		$('#defendant_add_tabs').tabs();
 		$('#cl_lawyer_add_tabs').tabs();
 		$('#def_lawyer_add_tabs').tabs();
+		$('#bailiff_add_tabs').tabs();
+		$('#syndicate_add_tabs').tabs();
+		$('#club_add_tabs').tabs();
 		
 		// -----------------------------------------------------------------------
 		
@@ -566,6 +641,36 @@ $(function() {
 				//update_case();
 				return false;
 			}
+		});
+		
+		// -----------------------------------------------------------------------
+
+		$('#person_dob').datepicker({ 
+			dateFormat: 'dd.mm.yy',
+			firstDay: 1,
+			monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'], 
+		});
+		$('#person_dob2').datepicker({ 
+			dateFormat: 'dd.mm.yy',
+			firstDay: 1,
+			monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'], 
+		});
+		
+		// -----------------------------------------------------------------------
+		
+		$('#person_dob_edit').datepicker({ 
+			dateFormat: 'dd.mm.yy',
+			firstDay: 1,
+			monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'], 
+		});
+		
+		// -----------------------------------------------------------------------
+		
+		console.log($('.hasDatepicker'));
+		$('.hasDatepicker').datepicker({ 
+			dateFormat: 'dd.mm.yy',
+			firstDay: 1,
+			monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'], 
 		});
 		
 		// -----------------------------------------------------------------------
@@ -685,6 +790,54 @@ $(function() {
 			hide: 'fade',
 			close: function() {
 				$('#def_lawyer_add_dialog input, #def_lawyer_add_dialog select, #def_lawyer_add_dialog textarea').val('');
+			}
+		});
+		
+		// -----------------------------------------------------------------------
+		
+		$('#bailiff_add_dialog').dialog({
+			autoOpen: false,
+			width: '40%',
+			height: '400',
+			position: ['center', 100],
+			modal: true,
+			resizable: false,
+			show: 'fade',
+			hide: 'fade',
+			close: function() {
+				$('#bailiff_add_dialog input, #bailiff_add_dialog select, #bailiff_add_dialog textarea').val('');
+			}
+		});
+		
+		// -----------------------------------------------------------------------
+		
+		$('#syndicate_add_dialog').dialog({
+			autoOpen: false,
+			width: '40%',
+			height: '400',
+			position: ['center', 100],
+			modal: true,
+			resizable: false,
+			show: 'fade',
+			hide: 'fade',
+			close: function() {
+				$('#syndicate_add_dialog input, #syndicate_add_dialog select, #syndicate_add_dialog textarea').val('');
+			}
+		});
+		
+		// -----------------------------------------------------------------------
+		
+		$('#club_add_dialog').dialog({
+			autoOpen: false,
+			width: '40%',
+			height: '400',
+			position: ['center', 100],
+			modal: true,
+			resizable: false,
+			show: 'fade',
+			hide: 'fade',
+			close: function() {
+				$('#club_add_dialog input, #club_add_dialog select, #club_add_dialog textarea').val('');
 			}
 		});
 		
@@ -906,6 +1059,69 @@ $(function() {
 		
 		// -----------------------------------------------------------------------
 		
+		$( "#bailiff_search" ).autocomplete({
+			source: persons,
+			focus: function( event, ui ) {
+				$( "#bailiff_search" ).val( ui.item.label );
+				return false;
+			},
+			select: function( event, ui ) {
+				link_person(ui.item.value, 'bailiff');
+				event.stopImmediatePropagation();
+				return false;
+			}
+		})
+		.data('autocomplete')._renderItem = function( ul, item ) {
+			return $('<li></li>')
+				.data('item.autocomplete', item )
+				.append( "<a>" + item.label + "<br/><span class=\"small\">" + item.street + ", "+item.zipcode+" "+item.city+"</span></a>" )
+				.appendTo( ul );
+		};
+		
+		// -----------------------------------------------------------------------
+		
+		$( "#syndicate_search" ).autocomplete({
+			source: persons,
+			focus: function( event, ui ) {
+				$( "#syndicate_search" ).val( ui.item.label );
+				return false;
+			},
+			select: function( event, ui ) {
+				link_person(ui.item.value, 'syndicate');
+				event.stopImmediatePropagation();
+				return false;
+			}
+		})
+		.data('autocomplete')._renderItem = function( ul, item ) {
+			return $('<li></li>')
+				.data('item.autocomplete', item )
+				.append( "<a>" + item.label + "<br/><span class=\"small\">" + item.street + ", "+item.zipcode+" "+item.city+"</span></a>" )
+				.appendTo( ul );
+		};
+		
+		// -----------------------------------------------------------------------
+		
+		$( "#club_search" ).autocomplete({
+			source: persons,
+			focus: function( event, ui ) {
+				$( "#club_search" ).val( ui.item.label );
+				return false;
+			},
+			select: function( event, ui ) {
+				link_person(ui.item.value, 'club');
+				event.stopImmediatePropagation();
+				return false;
+			}
+		})
+		.data('autocomplete')._renderItem = function( ul, item ) {
+			return $('<li></li>')
+				.data('item.autocomplete', item )
+				.append( "<a>" + item.label + "<br/><span class=\"small\">" + item.street + ", "+item.zipcode+" "+item.city+"</span></a>" )
+				.appendTo( ul );
+		};
+		
+		// -----------------------------------------------------------------------
+		
 		$( "#case_type" ).autocomplete({
 			source: case_types
 		});
@@ -938,6 +1154,14 @@ $(function() {
 		
 		$('button#case_update').click(function(event) {
 			update_case();
+			event.stopImmediatePropagation();
+	  		return false;
+		});
+		
+		// -----------------------------------------------------------------------
+		
+		$('button#send_mail').click(function(event) {
+			send_mail();
 			event.stopImmediatePropagation();
 	  		return false;
 		});
@@ -994,6 +1218,30 @@ $(function() {
 		
 		$('#def_lawyer_name').focus(function(event) {
 			$('#def_lawyer_add_dialog').dialog('open');
+			event.stopImmediatePropagation();
+			return false;
+		});
+		
+		// -----------------------------------------------------------------------
+		
+		$('#bailiff_name').focus(function(event) {
+			$('#bailiff_add_dialog').dialog('open');
+			event.stopImmediatePropagation();
+			return false;
+		});
+		
+		// -----------------------------------------------------------------------
+		
+		$('#syndicate_name').focus(function(event) {
+			$('#syndicate_add_dialog').dialog('open');
+			event.stopImmediatePropagation();
+			return false;
+		});
+		
+		// -----------------------------------------------------------------------
+		
+		$('#club_name').focus(function(event) {
+			$('#club_add_dialog').dialog('open');
 			event.stopImmediatePropagation();
 			return false;
 		});
@@ -1216,10 +1464,11 @@ $(function() {
 		
 		// -----------------------------------------------------------------------
 		
-		$('#case_list_1 a').click(function(event) {
+		$('#case_list_1 a, #case_list_2 a, #case_list_3 a').click(function(event) {
 			
 			$('#case_list_1 li').removeClass('current');
 			$('#case_list_2 li').removeClass('current');
+			$('#case_list_3 li').removeClass('current');
 			$(this).parent().addClass('current');
 			var url = $(this).attr("href");
 			
@@ -1237,28 +1486,6 @@ $(function() {
 	  		return false;
 		});
 		
-		// -----------------------------------------------------------------------
-		
-		$('#case_list_2 a').click(function(event) {
-			
-			$('#case_list_1 li').removeClass('current');
-			$('#case_list_2 li').removeClass('current');
-			$(this).parent().addClass('current');
-			var url = $(this).attr("href");
-			
-			$.ajax({
-			  type: "POST",
-			  url: url,
-			  async: false,
-			  success: function(msg){
-			  	$('#select_file').remove();
-	    		$('#case_details').html(msg);
-				init_gui();
-	  		  }
-	  		});
-	  		event.stopImmediatePropagation();
-	  		return false;
-		});
 		
 		// -----------------------------------------------------------------------
 		
@@ -1402,6 +1629,12 @@ $(function() {
   		event.stopImmediatePropagation();
 	  	return false;
 	});
+
+	$('#printlist').on('click', function(evt) {
+		evt.preventDefault();
+		var selectedTab = $('#cases_tabs').tabs('option', 'selected');
+		window.open('case/printlist/'+selectedTab);
+	})
 	
 	// -----------------------------------------------------------------------
 	

@@ -13,6 +13,29 @@ class Controller_Appointment extends Controller {
 			$appointment->save();
 			$case->save();
 			
+			//Send E-Mail
+			if($_POST['appointment_eviction']) {
+				$case_types = ORM::factory('casetype')->find_all();
+				$event_types = ORM::factory('eventtype')->find_all();
+				$cost_types = ORM::factory('costtype')->find_all();
+				$details_content = View::factory('case_details_mail');
+				$details_content->the_case = $case;
+				$details_content->case_types = $case_types;
+				$details_content->event_types = $event_types;
+				$details_content->cost_types = $cost_types;		
+
+				$recipients = ORM::factory('user')->where('eviction_note', '=', '1')->find_all();
+
+				$email = Email::factory('Fall '.$case->tenancy->tenancy_ve.' - RÄUMUNG ERFOLGT')
+					->message($details_content, 'text/html')
+				    ->from('info@agv-essen.de', 'Assindia Grundstücksverwaltung GmbH');
+
+				foreach ($recipients as $recipient) {
+					$email->to($recipient->email);
+				}
+				$email->send();
+			}
+			
 			$appointment_list_item = View::factory('appointment_list_item');
 			$appointment_list_item->appointment = $appointment;
 			echo $appointment_list_item;

@@ -10,7 +10,8 @@ if ($followup-$now < 345600) {
 }
 
 if($the_case->case_active == 0) {
-	$list_class = 'notactive';
+	// $list_class = 'notactive';
+	$list_class = 'current';
 }
 
 ?>
@@ -27,8 +28,9 @@ if($the_case->case_active == 0) {
 		echo number_format($total, 2, ',', '');
 		?> €</span>
 		<div class="clear"></div>
-		<span class="grid_12 small">Kläger: <?php foreach($the_case->claimants->find_all() as $claimant):?><?=$claimant->person_title.'&nbsp;'.$claimant->person_firstname . '&nbsp;' . $claimant->person_lastname?>, <?php endforeach;?><br />
-		Beklagter: <?php foreach($the_case->defendants->find_all() as $defendant):?><?=$defendant->person_title.'&nbsp;'.$defendant->person_firstname.'&nbsp;'.$defendant->person_lastname?>, <?php endforeach;?></span>
+		<span class="grid_12 small">Status: <?= $the_case->status->name ?><br>
+		Vermieter: <?php foreach($the_case->claimants->find_all() as $claimant):?><?=$claimant->person_title.'&nbsp;'.$claimant->person_firstname . '&nbsp;' . $claimant->person_lastname?>, <?php endforeach;?><br />
+		Mieter / Schuldner: <?php foreach($the_case->defendants->find_all() as $defendant):?><?=$defendant->person_title.'&nbsp;'.$defendant->person_firstname.'&nbsp;'.$defendant->person_lastname?>, <?php endforeach;?></span>
 		<div class="clear"></div>
 		
 		<div style="display:none;">
