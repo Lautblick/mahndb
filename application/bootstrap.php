@@ -1,6 +1,8 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 // -- Environment setup --------------------------------------------------------
+require APPPATH.'config/myconf'.EXT;
+
 
 // Load the core Kohana class
 require SYSPATH.'classes/kohana/core'.EXT;

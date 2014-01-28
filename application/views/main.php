@@ -12,7 +12,7 @@
 More info: h5bp.com/b/378 -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<title>Versicherungsdatenbank</title>
+<title><?= $STRINGTABLE['site.title'] ?></title>
 <meta name="description" content="">
 <meta name="author" content="">
 
@@ -55,9 +55,9 @@ For optimal performance, use a custom Modernizr build: www.modernizr.com/downloa
 	</div>
 	<div id="cases_tabs">
 		<ul>
-			<li><a href="#case_list_1">Offene Fälle</a></li>
-			<li><a href="#case_list_2">Geschlossene Fälle</a></li>
-			<li><a href="#case_list_3">Anstehende Termine</a></li>
+			<li><a href="#case_list_1"><?= $STRINGTABLE['main.caseList1'] ?></a></li>
+			<li><a href="#case_list_2"><?= $STRINGTABLE['main.caseList2'] ?></a></li>
+			<li><a href="#case_list_3"><?= $STRINGTABLE['main.caseList3'] ?></a></li>
 		</ul>
 		<ul id="case_list_1">
 			<?= $list_content ?>

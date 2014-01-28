@@ -17,7 +17,7 @@ if($the_case->case_active == 0) {
 ?>
 <li id="<?= $the_case->id ?>" class="<?= $list_class ?>">
 	<a href="/case/show/<?= $the_case->id ?>">
-		<span class="grid_6">VE-Nr. <?= $the_case->tenancy->tenancy_ve ?> (<?= $the_case->case_nr ?>/<?= date('Y', strtotime($the_case->case_created)) ?>)<br />
+		<span class="grid_6"><?= $STRINGTABLE['case.details.ve'] ?> <?= $the_case->tenancy->tenancy_ve ?> (<?= $the_case->case_nr ?>/<?= date('Y', strtotime($the_case->case_created)) ?>)<br />
 		<?= $the_case->casetype->type_name ?></span>
 		<span class="grid_6 right">
 		<?php
@@ -29,8 +29,8 @@ if($the_case->case_active == 0) {
 		?> €</span>
 		<div class="clear"></div>
 		<span class="grid_12 small">Status: <?= $the_case->status->name ?><br>
-		Vermieter: <?php foreach($the_case->claimants->find_all() as $claimant):?><?=$claimant->person_title.'&nbsp;'.$claimant->person_firstname . '&nbsp;' . $claimant->person_lastname?>, <?php endforeach;?><br />
-		Mieter / Schuldner: <?php foreach($the_case->defendants->find_all() as $defendant):?><?=$defendant->person_title.'&nbsp;'.$defendant->person_firstname.'&nbsp;'.$defendant->person_lastname?>, <?php endforeach;?></span>
+		<?= $STRINGTABLE['case.details.claimant'] ?>: <?php foreach($the_case->claimants->find_all() as $claimant):?><?=$claimant->person_title.'&nbsp;'.$claimant->person_firstname . '&nbsp;' . $claimant->person_lastname?>, <?php endforeach;?><br />
+		<?= $STRINGTABLE['case.details.defendant'] ?>: <?php foreach($the_case->defendants->find_all() as $defendant):?><?=$defendant->person_title.'&nbsp;'.$defendant->person_firstname.'&nbsp;'.$defendant->person_lastname?>, <?php endforeach;?></span>
 		<div class="clear"></div>
 		
 		<div style="display:none;">
