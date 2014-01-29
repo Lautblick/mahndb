@@ -1,15 +1,11 @@
 <?php defined('SYSPATH') or die('No direct access allowed.');
 
-define('PREFIX', 'inkasso');
+define('PREFIX', 'mahn');
 
 define('STRINGTABLE', serialize (array(
 
-<<<<<<< HEAD
-	'site.title' => 'Versicherungsdatenbank',
-=======
 	'table.prefix' => 'mahn',
 	'site.title' => 'Mahn- und Klagedatenbank',
->>>>>>> 5d5fe465bf956230db2171be6ef49cc1a15f3a71
 	'case.details.ve' => 'VE-Nr.',
 	'case.details.nr' => 'lfd. Inkassonummer',
 	'case.details.followup' => 'Wiedervorlage',
