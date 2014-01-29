@@ -4,7 +4,7 @@
 
 <form method="POST" class="form-horizontal">
 <div class="page-header">
-	<h3><?= $strings['user.create.newUser'] ?></h3>
+	<h3><?= $strings['user.create.newUser']; ?></h3>
 </div>
 <? if ($message) : ?>
 	<div class="alert alert-warning">
@@ -13,7 +13,7 @@
 <? endif; ?>
 
 <div class="form-group">
-	<label class="col-xs-4"><?= $strings['user.create.username'] ?></label>
+	<label class="col-xs-4"><?= $strings['user.create.username']; ?></label>
 	<div class="col-xs-8">
 		<input autocomplete="off" type="text" name="username" class="form-control" value="<?= HTML::chars(Arr::get($_POST, 'username')); ?>">
 		<?php if (Arr::get($errors, 'username')) { ?>
@@ -25,7 +25,7 @@
 </div>
 
 <div class="form-group">
-	<label class="col-xs-4"><?= $strings['user.create.email'] ?></label>
+	<label class="col-xs-4"><?= $strings['user.create.email']; ?></label>
 	<div class="col-xs-8">
 		<input autocomplete="off" type="email" name="email" class="form-control" value="<?= HTML::chars(Arr::get($_POST, 'email')); ?>">
 		<?php if (Arr::get($errors, 'email')) { ?>
@@ -37,7 +37,7 @@
 </div>
 
 <div class="form-group">
-	<label class="col-xs-4"><?= $strings['user.create.password'] ?></label>
+	<label class="col-xs-4"><?= $strings['user.create.password']; ?></label>
 	<div class="col-xs-8">
 		<input autocomplete="off" type="password" name="password" class="form-control">
 		<?php if (Arr::path($errors, '_external.password')) { ?>
@@ -49,7 +49,7 @@
 </div>
 
 <div class="form-group">
-	<label class="col-xs-4"><?= $strings['user.create.passwordRepeat'] ?></label>
+	<label class="col-xs-4"><?= $strings['user.create.passwordRepeat']; ?></label>
 	<div class="col-xs-8">
 		<input autocomplete="off" type="password" name="password_confirm" class="form-control">
 		<?php if (Arr::path($errors, '_external.password_confirm')) { ?>
@@ -61,18 +61,18 @@
 </div>
 
 <div class="form-group">
-	<label for="" class="col-xs-4"><?= $strings['user.create.roles'] ?></label>
+	<label for="" class="col-xs-4"><?= $strings['user.create.roles']; ?></label>
 	<div class="col-xs-8"><input autocomplete="off" type="checkbox" value="1" name="role_login" <?php if(HTML::chars(Arr::get($_POST, 'role_login')) == "1") { echo 'checked="checked"'; }; ?>> Login</div>
 	<div class="col-xs-8"><input autocomplete="off" type="checkbox" value="1" name="role_admin" <?php if(HTML::chars(Arr::get($_POST, 'role_admin')) == "1") { echo 'checked="checked"'; }; ?>> Admin</div>
 </div>
 
 <div class="form-group">
-	<label for="" class="col-xs-4"><?= $strings['user.create.commonNotification'] ?></label>
+	<label for="" class="col-xs-4"><?= $strings['user.create.commonNotification']; ?></label>
 	<div class="col-xs-8"><input autocomplete="off" type="checkbox" value="1" name="common_note" <?php if(HTML::chars(Arr::get($_POST, 'common_note')) == "1") { echo 'checked="checked"'; }; ?>></div>
 </div>
 
 <div class="form-group">
-	<label for="" class="col-xs-4"><?= $strings['user.create.evictionNotification'] ?></label>
+	<label for="" class="col-xs-4"><?= $strings['user.create.evictionNotification']; ?></label>
 	<div class="col-xs-8"><input autocomplete="off" type="checkbox" value="1" name="eviction_note" <?php if(HTML::chars(Arr::get($_POST, 'eviction_note')) == "1") { echo 'checked="checked"'; }; ?>></div>
 </div>
 
@@ -87,13 +87,13 @@
 <div class="col-xs-8">
 <table class="table table-striped">
 	<tr>
-		<th><?= $strings['user.create.username'] ?></th>
-		<th><?= $strings['user.create.email'] ?></th>
-		<th><?= $strings['user.create.numberOfLogins'] ?></th>
-		<th><?= $strings['user.create.lastLogin'] ?></th>
-		<th><?= $strings['user.create.roles'] ?></th>
-		<th><?= $strings['user.create.an'] ?></th>
-		<th><?= $strings['user.create.rn'] ?></th>
+		<th><?= $strings['user.create.username']; ?></th>
+		<th><?= $strings['user.create.email']; ?></th>
+		<th><?= $strings['user.create.numberOfLogins']; ?></th>
+		<th><?= $strings['user.create.lastLogin']; ?></th>
+		<th><?= $strings['user.create.roles']; ?></th>
+		<th><?= $strings['user.create.an']; ?></th>
+		<th><?= $strings['user.create.rn']; ?></th>
 		<th>&nbsp;</th>
 		<th>&nbsp;</th>
 	</tr>
