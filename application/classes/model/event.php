@@ -1,5 +1,5 @@
 <?php defined('SYSPATH') or die('No direct script access.');
-
+require APPPATH.'config/myconf'.EXT;
 class Model_Event extends ORM
 {
 	protected $_table_name = $STRINGTABLE['table_prefix'] . '_events';
