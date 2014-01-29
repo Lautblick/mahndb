@@ -2,11 +2,13 @@
 
 class Model_Role extends Model_Auth_Role {
 
-	public function __construct() {
-		$strings = unserialize (STRINGTABLE); 
-		$this->_table_name = PREFIX . $this->_table_name;
-		parent::__construct();
-	} protected $_table_name = '_roles';
+protected $_table_name = 'mahn_roles';
+
+	// public function __construct() {
+	// 	$strings = unserialize (STRINGTABLE); 
+	// 	$this->_table_name = $strings['table.prefix'] . $this->_table_name;
+	// 	parent::__construct();
+	// } 
 
 	// This class can be replaced or extended
 
