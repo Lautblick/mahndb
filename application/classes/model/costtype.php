@@ -2,7 +2,7 @@
 
 class Model_Costtype extends ORM
 {
-	protected $_table_name = 'mahn_cost_types';
+	protected $_table_name = $STRINGTABLE['table_prefix'] . '_cost_types';
 	
 	// Relationships
 	protected $_has_many = array(

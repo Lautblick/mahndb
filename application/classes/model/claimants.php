@@ -2,7 +2,7 @@
 
 class Model_Claimants extends ORM
 {
-	protected $_table_name = 'mahn_claimants';
+	protected $_table_name = $STRINGTABLE['table_prefix'] . '_claimants';
 	
 	// Relationships
 	protected $_belongs_to = array(

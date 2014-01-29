@@ -2,7 +2,7 @@
 
 class Model_status extends ORM
 {
-	protected $_table_name = 'mahn_statuses';
+	protected $_table_name = $STRINGTABLE['table_prefix'] . '_statuses';
 	// Relationships
 	protected $_belongs_to = array(
 		'mahn_cases' => array(

@@ -3,7 +3,7 @@
 
 class Model_Case extends ORM
 {
-	protected $_table_name = 'mahn_cases';
+	protected $_table_name = $STRINGTABLE['table_prefix'] . '_cases';
 
 	// Small example of how rules could look like.
 	protected $_rules = array(

@@ -2,7 +2,7 @@
 
 class Model_Role extends Model_Auth_Role {
 
-	protected $_table_name = 'mahn_roles';
+	protected $_table_name = $STRINGTABLE['table_prefix'] . '_roles';
 
 	// This class can be replaced or extended
 

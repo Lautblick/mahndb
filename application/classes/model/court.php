@@ -2,7 +2,7 @@
 
 class Model_Court extends ORM
 {
-	protected $_table_name = 'mahn_courts';
+	protected $_table_name = $STRINGTABLE['table_prefix'] . '_courts';
 	// Relationships
 	protected $_has_many = array(
 		'events' => array(

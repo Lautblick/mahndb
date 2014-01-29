@@ -3,7 +3,7 @@
 class Model_User extends Model_Auth_User
 {
 
-	protected $_table_name = 'mahn_users';
+	protected $_table_name = $STRINGTABLE['table_prefix'] . '_users';
 
 	// Relationships
 	protected $_has_many = array(

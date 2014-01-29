@@ -2,7 +2,7 @@
 
 class Model_Appointment extends ORM
 {
-	protected $_table_name = 'mahn_appointments';
+	protected $_table_name = $STRINGTABLE['table_prefix'] . '_appointments';
 	// Relationships
 	protected $_belongs_to = array(
 		'case' => array(

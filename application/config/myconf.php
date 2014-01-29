@@ -2,7 +2,7 @@
 
 const $STRINGTABLE = array(
 
-	'table_prefix' => 'inkasso_',
+	'table_prefix' => 'inkasso',
 	'site.title' => 'Versicherungsdatenbank',
 	'case.details.ve' => 'VE-Nr.',
 	'case.details.nr' => 'lfd. Inkassonummer',
