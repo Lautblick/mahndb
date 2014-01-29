@@ -1,4 +1,4 @@
-<?php require APPPATH.'config/myconf'.EXT; ?>
+<?php $strings = unserialize(STRINGTABLE);?>
 <li id="<?= $person->id ?>">
 	<?= $person->person_title.' '.$person->person_firstname.' '.$person->person_lastname ?><br/>
 	<span class="small">

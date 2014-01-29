@@ -1,8 +1,8 @@
 <?php defined('SYSPATH') or die('No direct access allowed.');
 
-$STRINGTABLE = array(
+define('STRINGTABLE', serialize (array(
 
-	'table_prefix' => 'inkasso',
+	'table.prefix' => 'inkasso',
 	'site.title' => 'Versicherungsdatenbank',
 	'case.details.ve' => 'VE-Nr.',
 	'case.details.nr' => 'lfd. Inkassonummer',
@@ -125,4 +125,4 @@ $STRINGTABLE = array(
 	'main.caseList1' => 'Offene Fälle',
 	'main.caseList2' => 'Geschlossene Fälle',
 	'main.caseList3' => 'Anstehende Fälle'
-);
+)));

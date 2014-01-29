@@ -1,4 +1,4 @@
-<?php require APPPATH.'config/myconf'.EXT; ?>
+<?php $strings = unserialize(STRINGTABLE);?>
 <li class="<?= $event->id ?>">
 	<span class="grid_6"><?= $event->eventtype->type_name ?> <?= ($event->event_file != '')?'<a href="'.$event->event_file.'" target="_blank" class="download"><img src="img/icon-file-ffffff.png"/> Anhang</a>':'' ?></span>
 	<span class="grid_6 right"><?= date('d.m.Y', strtotime($event->event_date)) ?> (Session: <?= $event->event_session ?>)</span>

@@ -1,4 +1,4 @@
-<?php require APPPATH.'config/myconf'.EXT; ?>
+<?php $strings = unserialize(STRINGTABLE);?>
 <?php
 foreach ($upcoming_appointments as $appointment) {
 	// $appointment->case = $appointment->case->find();
@@ -6,7 +6,7 @@ foreach ($upcoming_appointments as $appointment) {
 
 <li class="<?= $appointment->case->id ?>">
 	<a href="/case/show/<?= $appointment->case->id ?>">
-		<span class="grid_6"><?= $STRINGTABLE['case.detail.ve'] ?> <?= $appointment->case->tenancy->tenancy_ve ?> (<?= $appointment->case->case_nr ?>/<?= date('Y', strtotime($appointment->case->case_created)) ?>)<br />
+		<span class="grid_6"><?= $strings['case.detail.ve'] ?> <?= $appointment->case->tenancy->tenancy_ve ?> (<?= $appointment->case->case_nr ?>/<?= date('Y', strtotime($appointment->case->case_created)) ?>)<br />
 		<?= $appointment->case->casetype->type_name ?></span>
 		<span class="grid_6 right"><?= date('d.m.Y', strtotime($appointment->appointment_datetime)) ?></span>
 		<span class="grid_6 right"><?= date('H:i', strtotime($appointment->appointment_datetime)) ?> Uhr</span>

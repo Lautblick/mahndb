@@ -1,4 +1,4 @@
-<?php require APPPATH.'config/myconf'.EXT; ?>
+<?php $strings = unserialize(STRINGTABLE);?>
 <!doctype html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
@@ -13,7 +13,7 @@
 More info: h5bp.com/b/378 -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<title><?= $STRINGTABLE['site.title'] ?></title>
+<title><?= $strings['site.title'] ?></title>
 <meta name="description" content="">
 <meta name="author" content="">
 

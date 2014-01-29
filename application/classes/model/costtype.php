@@ -1,8 +1,12 @@
 <?php defined('SYSPATH') or die('No direct script access.');
-require APPPATH.'config/myconf'.EXT;
+
 class Model_Costtype extends ORM
 {
-	protected $_table_name = $STRINGTABLE['table_prefix'] . '_cost_types';
+	public function __construct() {
+		$strings = unserialize (STRINGTABLE); 
+		$this->_table_name = $strings['table.prefix'] . $this->_table_name;
+		parent::__construct();
+	} protected $_table_name = '_cost_types';
 	
 	// Relationships
 	protected $_has_many = array(

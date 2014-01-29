@@ -1,9 +1,13 @@
 <?php defined('SYSPATH') or die('No direct script access.');
-require APPPATH.'config/myconf'.EXT;
+
 
 class Model_Case extends ORM
 {
-	protected $_table_name = $STRINGTABLE['table_prefix'] . '_cases';
+	public function __construct() {
+		$strings = unserialize (STRINGTABLE); 
+		$this->_table_name = $strings['table.prefix'] . $this->_table_name;
+		parent::__construct();
+	} protected $_table_name = '_cases';
 
 	// Small example of how rules could look like.
 	protected $_rules = array(
