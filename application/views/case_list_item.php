@@ -30,8 +30,8 @@ if($the_case->case_active == 0) {
 		?> €</span>
 		<div class="clear"></div>
 		<span class="grid_12 small">Status: <?= $the_case->status->name ?><br>
-		<?= $strings['case.details.claimant']; ?>: <?php foreach($the_case->claimants->find_all() as $claimant):?><?=$claimant->person_title.'&nbsp;'.$claimant->person_firstname . '&nbsp;' . $claimant->person_lastname?>, <?php endforeach;?><br />
-		<?= $strings['case.details.defendant']; ?>: <?php foreach($the_case->defendants->find_all() as $defendant):?><?=$defendant->person_title.'&nbsp;'.$defendant->person_firstname.'&nbsp;'.$defendant->person_lastname?>, <?php endforeach;?></span>
+		<?= $strings['case.details.claimants']; ?>: <?php foreach($the_case->claimants->find_all() as $claimant):?><?=$claimant->person_title.'&nbsp;'.$claimant->person_firstname . '&nbsp;' . $claimant->person_lastname?>, <?php endforeach;?><br />
+		<?= $strings['case.details.defendants']; ?>: <?php foreach($the_case->defendants->find_all() as $defendant):?><?=$defendant->person_title.'&nbsp;'.$defendant->person_firstname.'&nbsp;'.$defendant->person_lastname?>, <?php endforeach;?></span>
 		<div class="clear"></div>
 		
 		<div style="display:none;">

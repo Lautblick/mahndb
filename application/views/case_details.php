@@ -315,12 +315,12 @@
 						</div>
 					</div>
 				</div>
-				<div class="grid_3"><label for="court_ref"><?= $strings['case.details.courtRef']; ?></label><input type="text" name="court_ref" id="court_ref" rel="case" value="<?= $the_case->court_ref ?>" /></div>
+				<div class="grid_3"><label for="court_ref"><?= $strings['case_details.courtRef']; ?></label><input type="text" name="court_ref" id="court_ref" rel="case" value="<?= $the_case->court_ref ?>" /></div>
 			</fieldset>
 			<fieldset>
-				<div class="grid_6" id="<?= $the_case->bailiff_id; ?>"><label for="bailiff_name"><?= $strings['case.details.bailiff']; ?></label><br /><input type="text" style="width:80%;" name="bailiff_name" id="bailiff_name" value="<?= $the_case->bailiff->person_title.' '.$the_case->bailiff->person_firstname.' '.$the_case->bailiff->person_lastname ?>" /><button class="person_edit inline"><img src="img/icon_pencil.png" /></button></div>
-				<div class="grid_3"><label for="bailiff_charged"><?= $strings['case.details.bailiffCharged']; ?></label><input type="text" name="bailiff_charged" id="bailiff_charged" rel="case" class="datepicker" value="<?= date('d.m.Y', strtotime($the_case->bailiff_charged)) ?>" /></div>
-				<div class="grid_3"><label for="bailiff_ref"><?= $strings['case.details.bailiffRef']; ?></label><input type="text" name="bailiff_ref" id="bailiff_ref" rel="case" value="<?= $the_case->bailiff_ref ?>" /></div>
+				<div class="grid_6" id="<?= $the_case->bailiff_id; ?>"><label for="bailiff_name"><?= $strings['case_details.bailiff']; ?></label><br /><input type="text" style="width:80%;" name="bailiff_name" id="bailiff_name" value="<?= $the_case->bailiff->person_title.' '.$the_case->bailiff->person_firstname.' '.$the_case->bailiff->person_lastname ?>" /><button class="person_edit inline"><img src="img/icon_pencil.png" /></button></div>
+				<div class="grid_3"><label for="bailiff_charged"><?= $strings['case_details.bailiffCharged']; ?></label><input type="text" name="bailiff_charged" id="bailiff_charged" rel="case" class="datepicker" value="<?= date('d.m.Y', strtotime($the_case->bailiff_charged)) ?>" /></div>
+				<div class="grid_3"><label for="bailiff_ref"><?= $strings['case_details.bailiffRef']; ?></label><input type="text" name="bailiff_ref" id="bailiff_ref" rel="case" value="<?= $the_case->bailiff_ref ?>" /></div>
 				<div id="bailiff_add_dialog" title="Gerichtsvollzieher hinzufügen">
 					<div id="bailiff_add_tabs"> 
 						<ul>
@@ -375,7 +375,7 @@
 									</fieldset>
 								<?php } ?>
 								<fieldset>
-									<div class="grid_12"><button id="bailiff_add"><?= $strings['case.details.saveBailiff']; ?></button></div>
+									<div class="grid_12"><button id="bailiff_add"><?= $strings['case_details.saveBailiff']; ?></button></div>
 								</fieldset>
 							</div>
 						</div>
@@ -526,7 +526,7 @@
 						</li>
 						<?php endforeach;?>
 					</ul>
-					<div id="events_menu" class="menu ui-state-default"><button id="event_add_dialog_open"><span class="ui-icon ui-icon-circle-plus"></span><?= $strings['case.details.addEvent']; ?></button></div>
+					<div id="events_menu" class="menu ui-state-default"><button id="event_add_dialog_open"><span class="ui-icon ui-icon-circle-plus"></span><?= $strings['case.details.btn.addEvent']; ?></button></div>
 					<div id="event_add_dialog" title="Neues Ereignis erfassen">
 						<div class="container_12">
 							<fieldset>

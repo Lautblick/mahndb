@@ -6,7 +6,7 @@ protected $_table_name = 'mahn_roles';
 
 	// public function __construct() {
 	// 	$strings = unserialize (STRINGTABLE); 
-	// 	$this->_table_name = $strings['table.prefix'] . $this->_table_name;
+	// 	$this->_table_name = $strings['table.$strings['table.prefix']'] . $this->_table_name;
 	// 	parent::__construct();
 	// } 
 

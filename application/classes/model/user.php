@@ -8,7 +8,7 @@ class Model_User extends Model_Auth_User
 
 	// public function __construct() {
 	// 	$strings = unserialize (STRINGTABLE); 
-	// 	$this->_table_name = $strings['table.prefix'] . $this->_table_name;
+	// 	$this->_table_name = $strings['table.$strings['table.prefix']'] . $this->_table_name;
 	// 	parent::__construct();
 	// } 
 
