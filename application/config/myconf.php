@@ -1,8 +1,9 @@
 <?php defined('SYSPATH') or die('No direct access allowed.');
 
+define('PREFIX', 'inkasso');
+
 define('STRINGTABLE', serialize (array(
 
-	'table.prefix' => 'inkasso',
 	'site.title' => 'Versicherungsdatenbank',
 	'case.details.ve' => 'VE-Nr.',
 	'case.details.nr' => 'lfd. Inkassonummer',
