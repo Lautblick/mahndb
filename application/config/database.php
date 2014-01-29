@@ -20,7 +20,7 @@ return array
 			 * Ports and sockets may be appended to the hostname.
 			 */
 			'hostname'   => 'localhost',
-			'database'   => $STRINGTABLE['table_prefix'] . 'assindiadb',
+			'database'   => 'assindiadb',
 			'username'   => 'root',
 			'password'   => '',
 			'persistent' => FALSE,
@@ -51,7 +51,7 @@ return array
 		 *
 		 * string   identifier  set the escaping identifier
 		 */
-		'table_prefix' => $STRINGTABLE['table_prefix'],
+		'table_prefix' => '',
 		'charset'      => 'utf8',
 		'caching'      => FALSE,
 		'profiling'    => TRUE,
