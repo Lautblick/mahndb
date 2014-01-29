@@ -2,8 +2,8 @@
 
 define('STRINGTABLE', serialize (array(
 
-	'table.prefix' => 'inkasso',
-	'site.title' => 'Versicherungsdatenbank',
+	'table.prefix' => 'mahn',
+	'site.title' => 'Mahn- und Klagedatenbank',
 	'case.details.ve' => 'VE-Nr.',
 	'case.details.nr' => 'lfd. Inkassonummer',
 	'case.details.followup' => 'Wiedervorlage',
