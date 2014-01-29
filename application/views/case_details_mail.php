@@ -1,3 +1,4 @@
+<?php require APPPATH.'config/myconf'.EXT; ?>
 <head>
 <style>
 /*!

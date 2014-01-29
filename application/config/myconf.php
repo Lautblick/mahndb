@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct access allowed.');
 
-const $STRINGTABLE = array(
+$STRINGTABLE = array(
 
 	'table_prefix' => 'inkasso',
 	'site.title' => 'Versicherungsdatenbank',
@@ -89,7 +89,7 @@ const $STRINGTABLE = array(
 	'user.info.lastLogin' => 'Last Login: ',
 	'user.info.logout' => 'Logout',
 	'user.login.header' => 'Login',
-	'user.login.usernme' => 'Username',
+	'user.login.username' => 'Username',
 	'user.login.password' => 'Password',
 	'user.login.btn.login' => 'Login',
 	'user.login.createUser' => 'Create a new account',

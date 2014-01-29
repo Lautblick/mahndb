@@ -1,3 +1,4 @@
+<?php require APPPATH.'config/myconf'.EXT; ?>
 		<form>
 			<fieldset>
 				<input type="hidden" name="case_id" id="case_id" rel="case" value="<?= $the_case->id ?>" />

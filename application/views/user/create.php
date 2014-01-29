@@ -1,4 +1,4 @@
-
+<?php require APPPATH.'config/myconf'.EXT; ?>
 <div class="col-xs-4">
 <div class="well">
 

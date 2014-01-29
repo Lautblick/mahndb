@@ -1,3 +1,4 @@
+<?php require APPPATH.'config/myconf'.EXT; ?>
 <li class="<?= $cost->id ?>">
 	<span class="grid_6"><?= date('d.m.Y', strtotime($cost->cost_date)) ?> (Session: <?= $cost->cost_session ?>) <?= ($cost->cost_file != '')?'<a href="'.$cost->cost_file.'" target="_blank" class="download"><img src="img/icon-file-ffffff.png"/> Anhang</a>':'' ?></span>
 	<span class="grid_6 right amount"><?= number_format($cost->cost_amount, 2, ',', '.'); ?> €</span>

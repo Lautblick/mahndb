@@ -18,9 +18,9 @@ return array
 			 * Ports and sockets may be appended to the hostname.
 			 */
 			'hostname'   => 'localhost',
-			'database'   => 'assindiadb',
-			'username'   => 'root',
-			'password'   => '',
+			'database'   => 'd01963f0',
+			'username'   => 'd01963f0',
+			'password'   => 'testtest',
 			'persistent' => FALSE,
 		),
 		'table_prefix' => '',
@@ -39,9 +39,9 @@ return array
 			 * string   password    database password
 			 * boolean  persistent  use persistent connections?
 			 */
-			'dsn'        => 'mysql:host=localhost;dbname=assindiadb',
-			'username'   => 'root',
-			'password'   => 'sahnetorte',
+			'dsn'        => 'mysql:host=localhost;dbname=d01963f0',
+			'username'   => 'd01963f0',
+			'password'   => 'testtest',
 			'persistent' => FALSE,
 		),
 		/**

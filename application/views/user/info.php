@@ -1,3 +1,4 @@
+<?php require APPPATH.'config/myconf'.EXT; ?>
 <h2><?= $STRINGTABLE['user.info.header'] ?>"<?= $user->username; ?>"</h2>
 
 <ul>

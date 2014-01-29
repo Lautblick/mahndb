@@ -1,3 +1,4 @@
+<?php require APPPATH.'config/myconf'.EXT; ?>
 <?php
 foreach ($upcoming_appointments as $appointment) {
 	// $appointment->case = $appointment->case->find();

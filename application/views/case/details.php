@@ -1,4 +1,4 @@
-
+<?php require APPPATH.'config/myconf'.EXT; ?>
 	
 		<form>
 			<fieldset>

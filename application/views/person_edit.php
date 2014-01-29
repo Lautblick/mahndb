@@ -1,4 +1,4 @@
-
+<?php require APPPATH.'config/myconf'.EXT; ?>
 			<div class="container_12">
 				<fieldset>
 					<input type="hidden" id="person_id" name="person_id" value="<?= $person->id ?>" />

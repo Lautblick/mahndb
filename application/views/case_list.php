@@ -1,3 +1,4 @@
+<?php require APPPATH.'config/myconf'.EXT; ?>
 <?php foreach($cases as $case):
 
 $list_class = '';

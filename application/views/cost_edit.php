@@ -1,4 +1,4 @@
-			
+<?php require APPPATH.'config/myconf'.EXT; ?>			
 			<div class="container_12">
 				<input type="hidden" id="cost_id" name="cost_id" value="<?= $cost->id ?>" />
 				<fieldset>

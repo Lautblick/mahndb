@@ -1,3 +1,4 @@
+<?php require APPPATH.'config/myconf'.EXT; ?>
 <div class="grid_4 prefix_4">
 <h2><?= $STRINGTABLE['user.login.header'] ?></h2>
 <? if ($message) : ?>

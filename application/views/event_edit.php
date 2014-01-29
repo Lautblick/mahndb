@@ -1,4 +1,4 @@
-
+<?php require APPPATH.'config/myconf'.EXT; ?>
 			<div class="container_12">
 				<input type="hidden" id="event_id" name="event_id" value="<?= $event->id ?>" />
 				<fieldset>
