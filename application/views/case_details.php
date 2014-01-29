@@ -309,7 +309,7 @@
 									</fieldset>
 								<?php } ?>
 								<fieldset>
-									<div class="grid_12"><button id="def_lawyer_add"><?= $strings['case.details.saveDefendantLawyer']; ?></button></div>
+									<div class="grid_12"><button id="def_lawyer_add"><?= $strings['case_details.saveDefendantLawyer']; ?></button></div>
 								</fieldset>
 							</div>
 						</div>
