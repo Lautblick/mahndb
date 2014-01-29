@@ -13,7 +13,7 @@
 More info: h5bp.com/b/378 -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<title><?= $strings['site.title'] ?></title>
+<title><?= $strings['site.title']; ?></title>
 <meta name="description" content="">
 <meta name="author" content="">
 
@@ -56,9 +56,9 @@ For optimal performance, use a custom Modernizr build: www.modernizr.com/downloa
 	</div>
 	<div id="cases_tabs">
 		<ul>
-			<li><a href="#case_list_1"><?= $strings['main.caseList1'] ?></a></li>
-			<li><a href="#case_list_2"><?= $strings['main.caseList2'] ?></a></li>
-			<li><a href="#case_list_3"><?= $strings['main.caseList3'] ?></a></li>
+			<li><a href="#case_list_1"><?= $strings['main.caseList1']; ?></a></li>
+			<li><a href="#case_list_2"><?= $strings['main.caseList2']; ?></a></li>
+			<li><a href="#case_list_3"><?= $strings['main.caseList3']; ?></a></li>
 		</ul>
 		<ul id="case_list_1">
 			<?= $list_content ?>

@@ -1,11 +1,13 @@
 <?php $strings = unserialize(STRINGTABLE);?>
 <div class="grid_4 prefix_4">
-<h2><?= $strings['user.login.header'] ?></h2>
+<h2><?= $strings['user.login.header']; ?></h2>
 <? if ($message) : ?>
 	<p class="message">
 		<?= $message; ?>
 	</p>
 <? endif; ?>
+
+
 
 <?= Form::open('user/login'); ?>
 
