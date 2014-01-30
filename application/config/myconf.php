@@ -71,6 +71,7 @@ define('STRINGTABLE', serialize (array(
 	'case.details.clubRef' => 'Aktenzeichen Verein',
 	'case.details.clubAdd' => 'Verein hinzufügen',
 	'case.details.btn.saveClub' => 'Verein speichern',
+	'case.details.btn.save' => 'Speichern',
 	'user.create.newUser' => 'Neuer Benutzer',
 	'user.create.username' => 'Username',
 	'user.create.email' => 'E-Mail Adresse',

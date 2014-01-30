@@ -727,7 +727,7 @@
 			</fieldset>
 			<fieldset>
 				<div class="grid_12">
-					<button name="case_update" id="case_update"><?= $strings['case.details.btn.saveCosts']; ?></button>
+					<button name="case_update" id="case_update"><?= $strings['case.details.btn.save']; ?></button>
 					<button name="send_mail" id="send_mail" style="background-color: #ba0034; color: white; float: right;">E-Mail-Aktualisierung senden</button>
 				</div>
 			</fieldset>
