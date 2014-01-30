@@ -619,107 +619,107 @@ $(function() {
 		
 		// -----------------------------------------------------------------------
 		
-		// Datepicker
-		$('#case_followup').datepicker({
-			dateFormat: 'dd.mm.yy',
-			firstDay: 1,
-			monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'],
-			onSelect: function(dateText, inst) {
-				//update_case();
-				return false;
-			}
-		});
+		// // Datepicker
+		// $('#case_followup').datepicker({
+		// 	dateFormat: 'dd.mm.yy',
+		// 	firstDay: 1,
+		// 	monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'],
+		// 	onSelect: function(dateText, inst) {
+		// 		//update_case();
+		// 		return false;
+		// 	}
+		// });
 		
-		// -----------------------------------------------------------------------
+		// // -----------------------------------------------------------------------
 		
-		// Datepicker
-		$('#cl_lawyer_charged').datepicker({
-			dateFormat: 'dd.mm.yy',
-			firstDay: 1,
-			monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'],
-			onSelect: function(dateText, inst) {
-				//update_case();
-				return false;
-			}
-		});
+		// // Datepicker
+		// $('#cl_lawyer_charged').datepicker({
+		// 	dateFormat: 'dd.mm.yy',
+		// 	firstDay: 1,
+		// 	monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'],
+		// 	onSelect: function(dateText, inst) {
+		// 		//update_case();
+		// 		return false;
+		// 	}
+		// });
 		
-		// -----------------------------------------------------------------------
+		// // -----------------------------------------------------------------------
 
-		$('#person_dob').datepicker({ 
-			dateFormat: 'dd.mm.yy',
-			firstDay: 1,
-			monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'], 
-		});
-		$('#person_dob2').datepicker({ 
-			dateFormat: 'dd.mm.yy',
-			firstDay: 1,
-			monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'], 
-		});
+		// $('#person_dob').datepicker({ 
+		// 	dateFormat: 'dd.mm.yy',
+		// 	firstDay: 1,
+		// 	monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'], 
+		// });
+		// $('#person_dob2').datepicker({ 
+		// 	dateFormat: 'dd.mm.yy',
+		// 	firstDay: 1,
+		// 	monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'], 
+		// });
 		
-		// -----------------------------------------------------------------------
+		// // -----------------------------------------------------------------------
 		
-		$('#person_dob_edit').datepicker({ 
-			dateFormat: 'dd.mm.yy',
-			firstDay: 1,
-			monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'], 
-		});
+		// $('#person_dob_edit').datepicker({ 
+		// 	dateFormat: 'dd.mm.yy',
+		// 	firstDay: 1,
+		// 	monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'], 
+		// });
 		
-		// -----------------------------------------------------------------------
+		// // -----------------------------------------------------------------------
 		
-		console.log($('.hasDatepicker'));
-		$('.hasDatepicker').datepicker({ 
-			dateFormat: 'dd.mm.yy',
-			firstDay: 1,
-			monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'], 
-		});
+		// console.log($('.hasDatepicker'));
+		// $('.hasDatepicker').datepicker({ 
+		// 	dateFormat: 'dd.mm.yy',
+		// 	firstDay: 1,
+		// 	monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'], 
+		// });
 		
-		// -----------------------------------------------------------------------
+		// // -----------------------------------------------------------------------
 		
-		$('#event_date').datepicker({ 
-			dateFormat: 'dd.mm.yy',
-			firstDay: 1,
-			monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'], 
-		});
+		// $('#event_date').datepicker({ 
+		// 	dateFormat: 'dd.mm.yy',
+		// 	firstDay: 1,
+		// 	monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'], 
+		// });
 		
-		// -----------------------------------------------------------------------
+		// // -----------------------------------------------------------------------
 		
-		$('#event_date_edit').datepicker({ 
-			dateFormat: 'dd.mm.yy',
-			firstDay: 1,
-			monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'], 
-		});
+		// $('#event_date_edit').datepicker({ 
+		// 	dateFormat: 'dd.mm.yy',
+		// 	firstDay: 1,
+		// 	monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'], 
+		// });
 		
-		// -----------------------------------------------------------------------
+		// // -----------------------------------------------------------------------
 		
-		$('#appointment_date').datepicker({ 
-			dateFormat: 'dd.mm.yy',
-			firstDay: 1,
-			monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'], 
-		});
+		// $('#appointment_date').datepicker({ 
+		// 	dateFormat: 'dd.mm.yy',
+		// 	firstDay: 1,
+		// 	monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'], 
+		// });
 		
-		// -----------------------------------------------------------------------
+		// // -----------------------------------------------------------------------
 		
-		$('#appointment_date_edit').datepicker({ 
-			dateFormat: 'dd.mm.yy',
-			firstDay: 1,
-			monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'], 
-		});
+		// $('#appointment_date_edit').datepicker({ 
+		// 	dateFormat: 'dd.mm.yy',
+		// 	firstDay: 1,
+		// 	monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'], 
+		// });
 		
-		// -----------------------------------------------------------------------
+		// // -----------------------------------------------------------------------
 		
-		$('#cost_date').datepicker({ 
-			dateFormat: 'dd.mm.yy',
-			firstDay: 1,
-			monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'], 
-		});
+		// $('#cost_date').datepicker({ 
+		// 	dateFormat: 'dd.mm.yy',
+		// 	firstDay: 1,
+		// 	monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'], 
+		// });
 		
-		// -----------------------------------------------------------------------
+		// // -----------------------------------------------------------------------
 		
-		$('#cost_date_edit').datepicker({ 
-			dateFormat: 'dd.mm.yy',
-			firstDay: 1,
-			monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'], 
-		});
+		// $('#cost_date_edit').datepicker({ 
+		// 	dateFormat: 'dd.mm.yy',
+		// 	firstDay: 1,
+		// 	monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'], 
+		// });
 		
 		// -----------------------------------------------------------------------
 

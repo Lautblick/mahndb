@@ -3,6 +3,7 @@
 class Model_Court extends ORM
 {
 	protected $_table_name = 'mahn_courts';
+	
 	// Relationships
 	protected $_has_many = array(
 		'events' => array(

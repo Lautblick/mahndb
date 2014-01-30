@@ -7,7 +7,7 @@
 				<div class="grid_1"><label for="case_session">Session</label><input type="text" name="case_session" id="case_session" rel="case" value="<?= $the_case->case_session ?>" /></div>
 				<div class="grid_1"><label for="case_active">Fall aktiv</label><br /><input type="checkbox" name="case_active" id="case_active" rel="case" value="1" <?= ($the_case->case_active == '1')?'checked="checked"':'' ?> /></div>
 				<div class="grid_4"><label>Status</label><input type="text" disabled rel="case" id="case_status" value="<?= $the_case->status->name ?>" /></div>
-				<div class="grid_2"><label for="case_followup"><?= $strings['case.details.followup']; ?></label><input type="text" name="case_followup" id="case_followup" rel="case" class="datepicker" value="<?= date('d.m.Y', strtotime($the_case->case_followup)) ?>" /></div>
+				<div class="grid_2"><label for="case_followup"><?= $strings['case.details.followup']; ?></label><input type="date" name="case_followup" id="case_followup" rel="case" class="datepicker" value="<?= date('Y-m-d', strtotime($the_case->case_followup)) ?>" /></div>
 			</fieldset>
 			<fieldset>
 				<div class="grid_3"><label for="tenancy_street"><?= $strings['case.details.form.street']; ?></label><input type="text" name="tenancy_street" id="tenancy_street" rel="case" value="<?= $the_case->tenancy->address->address_street ?>" /></div>
@@ -189,7 +189,7 @@
 			</fieldset>
 			<fieldset>
 				<div class="grid_6" id="<?= $the_case->cl_lawyer_id; ?>"><label for="cl_lawyer_name"><?= $strings['case.details.claimantLawyer']; ?></label><br /><input type="text" style="width:80%;" name="cl_lawyer_name" id="cl_lawyer_name" value="<?= $the_case->cl_lawyer->person_title.' '.$the_case->cl_lawyer->person_firstname.' '.$the_case->cl_lawyer->person_lastname ?>" /><button class="person_edit inline"><img src="img/icon_pencil.png" /></button></div>
-				<div class="grid_3"><label for="cl_lawye_charged"><?= $strings['case.details.claimantCharged']; ?></label><input type="text" name="cl_lawyer_charged" id="cl_lawyer_charged" rel="case" class="datepicker" value="<?= date('d.m.Y', strtotime($the_case->cl_lawyer_charged)) ?>" /></div>
+				<div class="grid_3"><label for="cl_lawye_charged"><?= $strings['case.details.claimantCharged']; ?></label><br><input type="date" name="cl_lawyer_charged" id="cl_lawyer_charged" rel="case" class="datepicker" value="<?= date('Y-m-d', strtotime($the_case->cl_lawyer_charged)) ?>" /></div>
 				<div class="grid_3"><label for="cl_lawyer_ref"><?= $strings['case.details.claimantRef']; ?></label><input type="text" name="cl_lawyer_ref" id="cl_lawyer_ref" rel="case" value="<?= $the_case->cl_lawyer_ref ?>" /></div>
 				<div id="cl_lawyer_add_dialog" title="Anwalt hinzufügen">
 					<div id="cl_lawyer_add_tabs"> 
@@ -319,7 +319,7 @@
 			</fieldset>
 			<fieldset>
 				<div class="grid_6" id="<?= $the_case->bailiff_id; ?>"><label for="bailiff_name"><?= $strings['case_details.bailiff']; ?></label><br /><input type="text" style="width:80%;" name="bailiff_name" id="bailiff_name" value="<?= $the_case->bailiff->person_title.' '.$the_case->bailiff->person_firstname.' '.$the_case->bailiff->person_lastname ?>" /><button class="person_edit inline"><img src="img/icon_pencil.png" /></button></div>
-				<div class="grid_3"><label for="bailiff_charged"><?= $strings['case_details.bailiffCharged']; ?></label><input type="text" name="bailiff_charged" id="bailiff_charged" rel="case" class="datepicker" value="<?= date('d.m.Y', strtotime($the_case->bailiff_charged)) ?>" /></div>
+				<div class="grid_3"><label for="bailiff_charged"><?= $strings['case_details.bailiffCharged']; ?></label><br><input type="date" name="bailiff_charged" id="bailiff_charged" rel="case" class="datepicker" value="<?= date('Y-m-d', strtotime($the_case->bailiff_charged)) ?>" /></div>
 				<div class="grid_3"><label for="bailiff_ref"><?= $strings['case_details.bailiffRef']; ?></label><input type="text" name="bailiff_ref" id="bailiff_ref" rel="case" value="<?= $the_case->bailiff_ref ?>" /></div>
 				<div id="bailiff_add_dialog" title="Gerichtsvollzieher hinzufügen">
 					<div id="bailiff_add_tabs"> 
@@ -531,7 +531,7 @@
 						<div class="container_12">
 							<fieldset>
 								<div class="grid_6"><label for="event_type"><?= $strings['case.details.eventType']; ?></label><input type="text" name="event_type" id="event_type" /></div>
-								<div class="grid_6"><label for="event_date"><?= $strings['case.details.eventDate']; ?></label><input type="text" name="event_date" id="event_date" /></div>
+								<div class="grid_6"><label for="event_date"><?= $strings['case.details.eventDate']; ?></label><br><input type="date" name="event_date" id="event_date" /></div>
 							</fieldset>
 							<fieldset>
 								<div class="grid_3">

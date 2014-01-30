@@ -3,7 +3,7 @@
 				<input type="hidden" id="event_id" name="event_id" value="<?= $event->id ?>" />
 				<fieldset>
 					<div class="grid_6"><label for="event_type_edit"><?= $strings['case.details.eventType']; ?></label><input type="text" name="event_type_edit" id="event_type_edit" value="<?= $event->eventtype->type_name ?>" /></div>
-					<div class="grid_6"><label for="event_date_edit"><?= $strings['case.details.eventDate']; ?></label><input type="text" name="event_date_edit" id="event_date_edit" value="<?= $event->event_date ?>" /></div>
+					<div class="grid_6"><label for="event_date_edit"><?= $strings['case.details.eventDate']; ?></label><br><input type="date" name="event_date_edit" id="event_date_edit" value="<?= date('Y-m-d', strtotime($event->event_date)) ?>" /></div>
 				</fieldset>
 				<fieldset>
 					<div class="grid_3">

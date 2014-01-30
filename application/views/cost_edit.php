@@ -2,7 +2,7 @@
 			<div class="container_12">
 				<input type="hidden" id="cost_id" name="cost_id" value="<?= $cost->id ?>" />
 				<fieldset>
-					<div class="grid_6"><label for="cost_date_edit"><?= $strings['case.details.costDate']; ?></label><input type="text" name="cost_date_edit" id="cost_date_edit" value="<?= date('d.m.Y', strtotime($cost->cost_date)) ?>" /></div>
+					<div class="grid_6"><label for="cost_date_edit"><?= $strings['case.details.costDate']; ?></label><input type="date" name="cost_date_edit" id="cost_date_edit" value="<?= date('Y-m-d', strtotime($cost->cost_date)) ?>" /></div>
 					<div class="grid_6"><label for="cost_amount"><?= $strings['case.details.costValue']; ?></label><input type="text" name="cost_amount" id="cost_amount" value= "<?= number_format($cost->cost_amount, 2, ',', '.'); ?>" /></div>
 				</fieldset>
 				<fieldset>

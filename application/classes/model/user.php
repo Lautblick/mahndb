@@ -2,7 +2,6 @@
 
 class Model_User extends Model_Auth_User
 {
-
 	protected $_table_name = 'mahn_users';
 
 	// Relationships
