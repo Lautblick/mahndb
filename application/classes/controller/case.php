@@ -17,8 +17,9 @@ class Controller_Case extends Controller
 		}
 
 		$id = $this->request->param('id');
-			
+
 		$the_case = ORM::factory('case', $id);
+		// var_dump($the_case->id); die();
 		$case_types = ORM::factory('casetype')->find_all();
 		$event_types = ORM::factory('eventtype')->find_all();
 		$cost_types = ORM::factory('costtype')->find_all();

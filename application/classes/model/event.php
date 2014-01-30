@@ -2,11 +2,7 @@
 
 class Model_Event extends ORM
 {
-	public function __construct() {
-		$strings = unserialize (STRINGTABLE); 
-		$this->_table_name = $strings['table.prefix'] . $this->_table_name;
-		parent::__construct();
-	} protected $_table_name = '_events';
+	protected $_table_name = 'mahn_events';
 
 	protected $_belongs_to = array(
 		'case' => array(),

@@ -4,3 +4,5 @@ uploads/*
 
 
 application/config/database.php
+
+application/.DS_Store

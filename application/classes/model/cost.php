@@ -2,11 +2,7 @@
 
 class Model_Cost extends ORM
 {
-	public function __construct() {
-		$strings = unserialize (STRINGTABLE); 
-		$this->_table_name = $strings['table.prefix'] . $this->_table_name;
-		parent::__construct();
-	} protected $_table_name = '_costs';
+	protected $_table_name = 'mahn_costs';
 
 	protected $_belongs_to = array(
 		'case' => array(),
