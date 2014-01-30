@@ -115,6 +115,7 @@ define('STRINGTABLE', serialize (array(
 	'case_edit.btn.save' => 'Speichern',
 	'case_edit.btn.sendMail' => 'E-Mail-Aktualisierung senden',
 	'case_details.editPerson' => 'Person bearbeiten',
+	'case_details.savePerson' => 'Person speichern',
 	'case_details.editEvent' => 'Ereignis bearbeiten',
 	'case_details.editAppointment' => 'Termin bearbeiten',
 	'case_details.editCost' => 'Kosten bearbeiten',

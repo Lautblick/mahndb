@@ -49,6 +49,6 @@
 					</fieldset>
 				<?php } ?>
 				<fieldset>
-					<div class="grid_12"><button id="person_edit"><?= $strings['case.details.form.title']; ?></button></div>
+					<div class="grid_12"><button id="person_edit"><?= $strings['case_details.savePerson']; ?></button></div>
 				</fieldset>
 			</div>
