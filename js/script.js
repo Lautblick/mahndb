@@ -387,6 +387,7 @@ $(function() {
 		var case_id = $( "#case_id" ).val();        // <-- VE-Nr. bearbeiten öffnet Kläger hinzufügen???    Bestätigung bei Änderung VE-Nr.
 		var case_session = $( "#case_session" ).val();
 		var data = {
+			appointment_done: $('#appointment_done').attr('checked') ? 1 : 0,
 			appointment_date: $('#appointment_date').val(),
 			appointment_hour: $('#appointment_hour').val(),
 			appointment_minute: $('#appointment_minute').val(),
@@ -453,7 +454,8 @@ $(function() {
 	function update_appointment() {
 		var appointment_id = $('#appointment_edit_dialog #appointment_id').val();
 		var data = {
-			appointment_id: appointment_id,			
+			appointment_id: appointment_id,
+			appointment_done: $('#appointment_edit_dialog #appointment_done_edit').attr('checked') ? 1 : 0,
 			appointment_date: $('#appointment_edit_dialog #appointment_date_edit').val(),
 			appointment_hour: $('#appointment_edit_dialog #appointment_hour').val(),
 			appointment_minute: $('#appointment_edit_dialog #appointment_minute').val(),

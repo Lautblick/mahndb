@@ -30,7 +30,7 @@
 						</li>
 						<?php endforeach;?>
 					</ul>
-					<div id="claimants_menu" class="menu ui-state-default"><button id="claimant_add_dialog_open"><span class="ui-icon ui-icon-circle-plus"></span>Kläger hinzufügen</button></div>
+					<div id="claimants_menu" class="menu ui-state-default"><button id="claimant_add_dialog_open"><span class="ui-icon ui-icon-circle-plus"></span><?= $strings['case.details.btn.addClaimant']; ?></button></div>
 					<div id="claimant_add_dialog" title="<?= $strings['case.details.btn.addClaimant']; ?>">
 						<div id="claimant_add_tabs"> 
 							<ul>
@@ -113,8 +113,8 @@
 						</li>
 						<?php endforeach;?>
 					</ul>
-					<div id="defendants_menu" class="menu ui-state-default"><button id="defendant_add_dialog_open"><span class="ui-icon ui-icon-circle-plus"></span>Beklagten hinzufügen</button></div>
-					<div id="defendant_add_dialog" title="Beklagten hinzufügen">
+					<div id="defendants_menu" class="menu ui-state-default"><button id="defendant_add_dialog_open"><span class="ui-icon ui-icon-circle-plus"></span><?= $strings['case.details.btn.addDefendant']; ?></button></div>
+					<div id="defendant_add_dialog" title="<?= $strings['case.details.btn.addDefendant']; ?>">
 						<div id="defendant_add_tabs"> 
 							<ul>
 								<li><a href="#defendant_add_1"><?= $strings['case.details.search']; ?></a></li>
@@ -383,9 +383,9 @@
 				</div>
 			</fieldset>
 			<fieldset>
-				<div class="grid_6" id="<?= $the_case->syndicate_id; ?>"><label for="syndicate_name">ARGE</label><br /><input type="text" style="width:80%;" name="syndicate_name" id="syndicate_name" value="<?= $the_case->syndicate->person_title.' '.$the_case->syndicate->person_firstname.' '.$the_case->syndicate->person_lastname ?>" /><button class="person_edit inline"><img src="img/icon_pencil.png" /></button></div>
-				<div class="grid_3"><label for="syndicate_bgnr">BG-Nr. ARGE</label><input type="text" name="syndicate_bgnr" id="syndicate_bgnr" rel="case" value="<?= $the_case->syndicate_bgnr ?>" /></div>
-				<div class="grid_3"><label for="syndicate_ref">Aktenzeichen ARGE</label><input type="text" name="syndicate_ref" id="syndicate_ref" rel="case" value="<?= $the_case->syndicate_ref ?>" /></div>
+				<div class="grid_6" id="<?= $the_case->syndicate_id; ?>"><label for="syndicate_name"><?= $strings['case.details.syndicate']; ?></label><br /><input type="text" style="width:80%;" name="syndicate_name" id="syndicate_name" value="<?= $the_case->syndicate->person_title.' '.$the_case->syndicate->person_firstname.' '.$the_case->syndicate->person_lastname ?>" /><button class="person_edit inline"><img src="img/icon_pencil.png" /></button></div>
+				<div class="grid_3"><label for="syndicate_bgnr"><?= $strings['case.details.syndicateNumber']; ?></label><input type="text" name="syndicate_bgnr" id="syndicate_bgnr" rel="case" value="<?= $the_case->syndicate_bgnr ?>" /></div>
+				<div class="grid_3"><label for="syndicate_ref"><?= $strings['case.details.syndicateRef']; ?></label><input type="text" name="syndicate_ref" id="syndicate_ref" rel="case" value="<?= $the_case->syndicate_ref ?>" /></div>
 				<div id="syndicate_add_dialog" title="<?= $strings['case.details.btn.addSyndicate']; ?>">
 					<div id="syndicate_add_tabs"> 
 						<ul>
@@ -584,7 +584,13 @@
 					<div id="appointment_add_dialog" title="Neuen Termin erfassen">
 						<div class="container_12">
 							<fieldset>
-								<div class="grid_6"><label for="appointment_date"><?= $strings['appointment_edit.date']; ?></label><input type="text" name="appointment_date" id="appointment_date" /></div>
+								<div class="grid_6">
+									<input type="checkbox" name="appointment_done" id="appointment_done" />
+									<label for="appointment_done">Erledigt</label>
+								</div>
+							</fieldset>
+							<fieldset>
+								<div class="grid_6"><label for="appointment_date"><?= $strings['appointment_edit.date']; ?></label><input type="date" name="appointment_date" id="appointment_date" /></div>
 								<div class="grid_3"><label for="appointment_hour"><?= $strings['appointment_edit.time']; ?></label><br/><input type="text" name="appointment_hour" id="appointment_hour" maxlength="2" style="width:30px;" /> : <input type="text" name="appointment_minute" id="appointment_minute" maxlength="2" style="width:30px;" /></div>
 							</fieldset>
 							<fieldset>
@@ -697,7 +703,7 @@
 					<div id="cost_add_dialog" title="<?= $strings['case.details.btn.addCosts']; ?>">
 						<div class="container_12">
 							<fieldset>
-								<div class="grid_6"><label for="cost_date"><?= $strings['case.details.costDate']; ?></label><input type="text" name="cost_date" id="cost_date" /></div>
+								<div class="grid_6"><label for="cost_date"><?= $strings['case.details.costDate']; ?></label><input type="date" name="cost_date" id="cost_date" /></div>
 								<div class="grid_6"><label for="cost_amount"><?= $strings['case.details.costValue']; ?></label><input type="text" name="cost_amount" id="cost_amount" /></div>
 							</fieldset>
 							<fieldset>

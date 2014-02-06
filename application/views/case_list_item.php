@@ -38,6 +38,7 @@ if($the_case->case_active == 0) {
 		<?= $the_case->cl_lawyer->person_title.' '.$the_case->cl_lawyer->person_firstname.' '.$the_case->cl_lawyer->person_lastname; ?>
 		<?= $the_case->def_lawyer->person_title.' '.$the_case->def_lawyer->person_firstname.' '.$the_case->def_lawyer->person_lastname; ?>
 		<?= $the_case->court_ref; ?>
+			<?= $the_case->tenancy->address->address_street ?> <?= $the_case->tenancy->address->place_id ?> <?= $the_case->tenancy->address->place->place_name ?>
 		</div>
 		
 	</a>
